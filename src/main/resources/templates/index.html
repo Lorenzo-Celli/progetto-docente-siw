@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8" />
-<title>Demo</title>
-</head>
+	<head th:replace="fragments/base.html :: headerfiles(title='SIW')"> </head>
 <body>
-	<h4>Operazioni</h4>
-	<div>
-		<a th:href="@{/}">Inserisci Persona</a>
-	</div>
-	<div>
-		<a th:href="@{/}">elenco persone</a>
-	</div>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+    <div>
+    	<h4 th:text="#{header.index}">Welcome Page</h4>
+		<div>
+			<a th:href="@{/login}" th:text="#{index.login}">Accedi</a>
+   		</div>
+		<div>
+			<a th:href="@{/register}" th:text="#{index.register}">Registrati</a>
+   		</div>
+    </div>
+    <footer th:replace="fragments/base.html :: fondo(home='/')"></footer>
 </body>
-</html>
+</html>                          
