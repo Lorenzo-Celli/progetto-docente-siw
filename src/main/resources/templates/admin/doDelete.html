@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div>
+		<h4>Confermi?</h4>
+	</div>
+	<div>
+		<span> <a
+			th:href="@{/admin/confirmDelete/{id}(id = ${chef.id})}">SI</a>
+		</span> <span> <a th:href="@{/admin/chef}">NO</a></span>
+	</div>
+</body>
+</html>

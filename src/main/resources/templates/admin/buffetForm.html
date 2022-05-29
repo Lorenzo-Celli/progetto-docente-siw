@@ -2,29 +2,42 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
-<title>Dettagli persona</title>
+<title>Buffet</title>
 </head>
 <body>
-	<h1>Aggiungi una persona</h1>
-	<form th:action="@{/admin/buffetForm}" method="POST" th:object="${persona}">
-		<div th:if="${#fields.hasGlobalErrors()}">
-			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
-		</div>
+	<h3>
+		Buffet: <span th:if="${buffet.nome != null}"><span
+			th:text="${buffet.nome}"></span></span>
+	</h3>
+	<form action="#" th:action="@{/admin/buffetForm}" th:object="${buffet}"
+		method="post">
 		<div>
 			<span>Nome:</span> <span><input type="text" th:field="*{nome}" /></span>
 			<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
 		</div>
 		<div>
-			<span>Cognome:</span><span><input type="text"
-				th:field="*{cognome}" /></span> <span
-				th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></span>
+			<span>Descrizione:</span> <span><input type="text"
+				th:field="*{descrizione}" /></span> <span
+				th:if="${#fields.hasErrors('descrizione')}"
+				th:errors="*{descrizione}"></span>
 		</div>
+		<h3>
+			<span>Chef associato:</span><span th:if="${currentChef.nome != null}"><span
+				th:text="${currentChef.nome} + ' ' + ${currentChef.cognome}"></span></span>
+		</h3>
 		<div>
-			<span>Età:</span><span><input type="text" th:field="*{eta}" /></span>
-			<span th:if="${#fields.hasErrors('eta')}" th:errors="*{eta}"></span>
+			<span> <select th:field="*{chef}">
+					<option th:each="chef : ${chefs}" th:value="${chef.id}"
+						th:text="${chef.nome} + ' ' + ${chef.cognome}" />
+			</select>
+			</span> <span><button type="submit" name="action" value="saveChef">save</button></span>
+			<span> <a th:href="@{/admin/buffetForm/createChef}"> crea nuovo</a></span>
 		</div>
+		<h3>Piatti:</h3>
 		<div>
-			<span><button type="submit">Conferma</button></span>
+			<span>span</span> <span><a th:href="@{/admin/chefForm}">aggiungine
+					uno nuovo</a></span>
 		</div>
+
 	</form>
 </body>

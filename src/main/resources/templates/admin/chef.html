@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org">
 <body>
-<h1>ELENCO CHEFS:</h1>
+	<h1>ELENCO CHEFS:</h1>
+	<ul>
+		<li th:each="chef : ${chefs}"><a
+			th:text="${chef.nome} + ' ' + ${chef.cognome} + ' ' + ${chef.nazionalita}">paolo
+				rossi italiano </a>
+		<span><a th:href="@{/admin/chef/doDelete/{id}(id = ${chef.id})}">elimina</a></span>
+		</li> 
+	</ul>
+	<footer th:replace="fragments/base.html :: fondo(home='/default')">Home</footer>
 </body>
 </html>
+
+
