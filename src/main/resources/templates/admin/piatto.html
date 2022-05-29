@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-<h1>ELENCO PIATTI:</h1>
+	<h1>ELENCO PIATTI:</h1>
+	<ul>
+		<li th:each="piatto : ${piatti}"><a th:text="${piatto.nome}">carbonara</a>
+			<span><a
+				th:href="@{/admin/chef/doDelete/{id}(id = ${chef.id})}">elimina</a></span>
+		</li>
+	</ul>
+	<footer th:replace="fragments/base.html :: fondo(home='/default')">Home</footer>
 </body>
 </html>
