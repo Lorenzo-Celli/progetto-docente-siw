@@ -74,6 +74,17 @@ public class BuffetController {
 
 	}
 
+	
+	@RequestMapping(value="/admin/buffetForm", method = RequestMethod.POST, params = "action=saveBuffet")
+	public String salvaBuffet(Model model,
+			@ModelAttribute("buffet") Buffet b) {
+		buffetService.save(b);
+		model.addAttribute("buffet", new Buffet());
+		model.addAttribute("chefs",chefService.findAll());
+		model.addAttribute("currentChef", new Chef());
+		return "admin/buffetForm.html";
 
+
+	}
 
 }

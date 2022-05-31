@@ -21,34 +21,21 @@
 				th:if="${#fields.hasErrors('descrizione')}"
 				th:errors="*{descrizione}"></span>
 		</div>
-	</form>
 	<h3>Ingredienti del piatto</h3>
-	<form action="#" th:action="@{/admin/ingredienteForm}"
-		th:object="${ingrediente}" method="post">
-		<div>
-			<span>Nome:</span> <span><input type="text" th:field="*{nome}" /></span>
-			<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
-		</div>
-		<div>
-			<span>Origine:</span> <span><input type="text"
-				th:field="*{origine}" /></span> <span
-				th:if="${#fields.hasErrors('origine')}" th:errors="*{origine}"></span>
-		</div>
-		<div>
-			<span>Descrizione:</span> <span><input type="text"
-				th:field="*{descrizione}" /></span> <span
-				th:if="${#fields.hasErrors('descrizione')}"
-				th:errors="*{descrizione}"></span>
-		</div>
-		<div>
-			<button type="submit">aggiungi ingrediente</button>
-		</div>
-		<ul>
-			<li th:each="ingrediente : ${ingredienti}"><a
-				th:text="${ingrediente.nome} + 'origine:' + ${ingrediente.origine}">cipolla tropea </a> <span><a
-					th:href="@{/admin/chef/doDelete/{id}(id = ${ingrediente.id})}">rimuovi</a></span>
-			</li>
-		</ul>
+	<div>
+		<span> <select th:field="*{ingredienti}" >
+				<option th:each="ingrediente : ${ingredientiTotali}"
+					th:value="${ingrediente.id}"
+					th:text="${ingrediente.nome} + ' ' + ${ingrediente.origine}" />
+		</select>
+		</span> <span><button type="submit" name="action"
+				value="saveIngrediente">save</button></span> <span> <a
+			th:href="@{/admin/ingredienteForm}"> crea nuovo</a></span>
+	</div>
+	<ul>
+		<li th:each="ingrediente : ${ingredienti}"><a
+			th:text="${ingrediente.nome}">cipolla tropea </a> 
+		</li>	</ul>
 	</form>
 </body>
 </html>

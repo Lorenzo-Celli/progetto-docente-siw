@@ -2,12 +2,13 @@ package it.uniroma3.catering.siw.model;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+
 
 @Entity
 public class Piatto {
@@ -23,7 +24,7 @@ public class Piatto {
 	@ManyToMany
 	private List<Buffet> buffets;
 
-	@ManyToMany(mappedBy = "piatti",cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "piatto")
 	private List<Ingrediente> ingredienti;
 	
 	public Long getId() {

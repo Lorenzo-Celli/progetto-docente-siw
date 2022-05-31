@@ -1,12 +1,10 @@
 package it.uniroma3.catering.siw.model;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Ingrediente {
@@ -21,8 +19,8 @@ public class Ingrediente {
 	
 	private String descrizione;
 
-	@ManyToMany
-	private List<Piatto> piatti;
+	@ManyToOne
+	private Piatto piatto;
 
 	public Long getId() {
 		return id;
@@ -58,13 +56,19 @@ public class Ingrediente {
 		this.descrizione = descrizione;
 	}
 
-	public List<Piatto> getPiatti() {
-		return piatti;
+
+
+	public Piatto getPiatto() {
+		return piatto;
 	}
 
-	public void setPiatti(List<Piatto> piatti) {
-		this.piatti = piatti;
+
+
+	public void setPiatto(Piatto piatto) {
+		this.piatto = piatto;
 	}
-	
+
+
+
 	
 }

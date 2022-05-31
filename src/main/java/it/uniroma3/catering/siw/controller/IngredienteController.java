@@ -1,6 +1,5 @@
 package it.uniroma3.catering.siw.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import it.uniroma3.catering.siw.model.Ingrediente;
 import it.uniroma3.catering.siw.model.Piatto;
 import it.uniroma3.catering.siw.service.IngredienteService;
-import it.uniroma3.catering.siw.service.PiattoService;
 
 @Controller
 public class IngredienteController {
@@ -21,34 +19,28 @@ public class IngredienteController {
 	@Autowired
 	private IngredienteService ingredienteService;
 	
-	@Autowired
-	private PiattoService piattoService;
+//	@Autowired
+//	private PiattoService piattoService;
 
-	@RequestMapping(value="/admin/ingredienteForm", method = RequestMethod.POST)
-	public String addPiatto(Model model,
-			@ModelAttribute("ingrediente") Ingrediente i,
-			@ModelAttribute("piatto") Piatto p) {
-		
-		if (p.getId() != null) {
-			Piatto pi = piattoService.findById(p.getId());
-			ingredienteService.save(i);
-			pi.getIngredienti().add(i);
-			
-			model.addAttribute("ingredienti", pi.getIngredienti());
-			model.addAttribute("piatto", pi);
-			model.addAttribute("ingrediente", new Ingrediente());
-			return "admin/piattoForm.html";
-		}
-		
-		p.setIngredienti(new ArrayList<Ingrediente>());
-		p.getIngredienti().add(i);
-		piattoService.save(p);
-		
-		model.addAttribute("ingredienti", p.getIngredienti());
-		model.addAttribute("piatto", p);
+	@RequestMapping(value="/admin/ingredienteForm", method = RequestMethod.GET)
+	public String createPiatto(Model model) {
 		model.addAttribute("ingrediente", new Ingrediente());
+		return "admin/ingredienteForm";
 		
-		return "admin/piattoForm.html";
 	}
+	
+	@RequestMapping(value="/admin/ingredienteForm", method = RequestMethod.POST)
+	public String adddChef(Model model,
+			@ModelAttribute("ingrediente") Ingrediente i) {
+		ingredienteService.save(i);
+		List <Ingrediente> ingredientiTotali = ingredienteService.findAll(); 
+		model.addAttribute("ingredientiTotali", ingredientiTotali);
+		model.addAttribute("piatto", new Piatto());
+		model.addAttribute("ingredienti", new Ingrediente());
+		model.addAttribute("tmp", new Piatto());
+		return "admin/piattoForm.html";
 
+
+	}
+	
 }
