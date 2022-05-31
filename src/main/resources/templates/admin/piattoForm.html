@@ -21,21 +21,23 @@
 				th:if="${#fields.hasErrors('descrizione')}"
 				th:errors="*{descrizione}"></span>
 		</div>
-	<h3>Ingredienti del piatto</h3>
-	<div>
-		<span> <select th:field="*{ingredienti}" >
-				<option th:each="ingrediente : ${ingredientiTotali}"
-					th:value="${ingrediente.id}"
-					th:text="${ingrediente.nome} + ' ' + ${ingrediente.origine}" />
-		</select>
-		</span> <span><button type="submit" name="action"
-				value="saveIngrediente">save</button></span> <span> <a
-			th:href="@{/admin/ingredienteForm}"> crea nuovo</a></span>
-	</div>
-	<ul>
-		<li th:each="ingrediente : ${ingredienti}"><a
-			th:text="${ingrediente.nome}">cipolla tropea </a> 
-		</li>	</ul>
+		<h3>Ingredienti del piatto</h3>
+		<div>
+			<span> <select th:field="*{ingredienti}">
+					<option th:each="ingrediente : ${ingredientiTotali}"
+						th:value="${ingrediente.id}"
+						th:text="${ingrediente.nome} + ' ' + ${ingrediente.origine}" />
+			</select>
+			</span> <span><button type="submit" name="action"
+					value="saveIngrediente">save</button></span>
+					<span><button
+					type="submit" name="action" value="aggiungiNuovi">aggiungi
+					tutti ingredienti</button></span>
+		</div>
+		<ul>
+			<li th:each="ingrediente : ${ingredienti}"><a
+				th:text="${ingrediente.nome}">cipolla tropea </a></li>
+		</ul>
 	</form>
 </body>
 </html>

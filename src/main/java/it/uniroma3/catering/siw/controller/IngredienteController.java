@@ -1,5 +1,6 @@
 package it.uniroma3.catering.siw.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.uniroma3.catering.siw.model.Ingrediente;
-import it.uniroma3.catering.siw.model.Piatto;
 import it.uniroma3.catering.siw.service.IngredienteService;
 
 @Controller
@@ -29,17 +29,32 @@ public class IngredienteController {
 		
 	}
 	
-	@RequestMapping(value="/admin/ingredienteForm", method = RequestMethod.POST)
-	public String adddChef(Model model,
+	@RequestMapping(value="/admin/ingredienteForm", method = RequestMethod.POST, params = "action=keepAdding")
+	public String addIngredients(Model model,
 			@ModelAttribute("ingrediente") Ingrediente i) {
+		
 		ingredienteService.save(i);
-		List <Ingrediente> ingredientiTotali = ingredienteService.findAll(); 
-		model.addAttribute("ingredientiTotali", ingredientiTotali);
-		model.addAttribute("piatto", new Piatto());
-		model.addAttribute("ingredienti", new Ingrediente());
-		model.addAttribute("tmp", new Piatto());
-		return "admin/piattoForm.html";
+		model.addAttribute("piatto", i.getPiatto());
+		model.addAttribute("ingrediente", new Ingrediente());
+		return "admin/ingredienteForm.html";
 
+	}
+	
+	@RequestMapping(value="/admin/ingredienteForm", method = RequestMethod.POST, params = "action=finish")
+	public String finishAdding(Model model,
+			@ModelAttribute("ingrediente") Ingrediente i) {
+		
+		List<Ingrediente> ingredienti = new ArrayList<>();
+		
+		for (Ingrediente ii: ingredienteService.findAll()) {
+			if (ii.getPiatto().equals(i.getPiatto())) {
+				ingredienti.add(ii);
+			}
+		}
+		ingredienteService.save(i);
+		model.addAttribute("piatto", i.getPiatto());
+		model.addAttribute("ingredienti", ingredienti);
+		return "admin/piattoForm.html";
 
 	}
 	

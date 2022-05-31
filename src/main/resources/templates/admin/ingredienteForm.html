@@ -5,7 +5,7 @@
 <title>AGGIUNGI CHEF</title>
 </head>
 <body>
-	<h1>Aggiungi una persona</h1>
+	<h1>Aggiungi un piatto</h1>
 	<form action="#" th:action="@{/admin/ingredienteForm}"
 		th:object="${ingrediente}" method="post">
 		<div>
@@ -27,7 +27,15 @@
 				th:errors="*{descrizione}"></span>
 		</div>
 		<div>
-			<button type="submit">aggiungi ingrediente</button>
+			<span>Piatto associato: </span>  <span> <select th:field="*{piatto}">
+					<option th:value="${piatto.id}"
+						th:text="${piatto.nome}" />
+			</select>
+			</span>
+		</div>
+		<div>
+			<button type="submit" name="action" value="finish">torna al piatto</button>
+			<button type="submit" name="action" value="keepAdding">continua ad aggiungere</button>
 		</div>
 	</form>
 	<footer th:replace="fragments/base.html :: fondo(home='/admin')">Home</footer>

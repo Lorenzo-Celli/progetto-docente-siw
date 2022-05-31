@@ -57,5 +57,15 @@ public class PiattoController {
 
 
 	}
+	
+	@RequestMapping(value="/admin/piattoForm", method = RequestMethod.POST, params = "action=aggiungiNuovi")
+	public String aggiungiNuoviIngredienti(Model model,
+			@ModelAttribute("piatto") Piatto p) {
+		piattoService.save(p);
+		model.addAttribute("piatto",p);
+		model.addAttribute("ingrediente" , new Ingrediente());
+		return "admin/ingredienteForm.html";
+		
+	}
 
 }
