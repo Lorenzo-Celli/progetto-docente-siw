@@ -63,7 +63,7 @@ public class IngredienteController {
 	}
 	
 	@RequestMapping(value = "/admin/ingrediente/doDelete/{id}", method = RequestMethod.GET) 
-	private String deletePiatto(@PathVariable("id") Long id,Model model) {
+	private String deleteIngrediente(@PathVariable("id") Long id,Model model) {
 		Long idPiattoCorrente = ingredienteService.findById(id).getPiatto().getId();
 		Piatto piattoCorrente = piattoService.findById(idPiattoCorrente);
 		piattoCorrente.getIngredienti().remove(ingredienteService.findById(id));

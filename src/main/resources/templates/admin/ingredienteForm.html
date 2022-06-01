@@ -32,9 +32,8 @@
 			</span>
 		</div>
 		<div>
-			<button type="submit" name="action" value="finish">fine</button>
-			<button type="submit" name="action" value="keepAdding">continua
-				ad aggiungere</button>
+			<button type="submit" name="action" value="keepAdding">continua ad aggiungere</button>
+			<span> <a th:href="@{/default}">fine</a></span>
 		</div>
 			</form>
 			<h3 th:if="${piatto.ingredienti != null}">Ingredienti aggiunti</h3>
