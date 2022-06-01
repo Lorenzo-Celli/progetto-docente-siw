@@ -8,15 +8,15 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Ingrediente {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	private String nome;
-	
+
 	private String origine;
-	
+
 	private String descrizione;
 
 	@ManyToOne
@@ -26,8 +26,8 @@ public class Ingrediente {
 		return id;
 	}
 
-	
-		
+
+
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -56,13 +56,9 @@ public class Ingrediente {
 		this.descrizione = descrizione;
 	}
 
-
-
 	public Piatto getPiatto() {
 		return piatto;
 	}
-
-
 
 	public void setPiatto(Piatto piatto) {
 		this.piatto = piatto;
@@ -70,5 +66,5 @@ public class Ingrediente {
 
 
 
-	
+
 }

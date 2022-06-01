@@ -12,11 +12,11 @@
 	<form action="#" th:action="@{/admin/buffetForm}" th:object="${buffet}"
 		method="post">
 		<div>
-			<span>Nome:</span> <span><input type="text" th:field="*{nome}" /></span>
+			<span>Nome:</span> <span><input type="text" th:field="*{nome}" required/></span>
 			<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
 		</div>
 		<div>
-			<span>Descrizione:</span> <span><input type="text"
+			<span>Descrizione:</span> <span><input type="text" height="20"
 				th:field="*{descrizione}" /></span> <span
 				th:if="${#fields.hasErrors('descrizione')}"
 				th:errors="*{descrizione}"></span>

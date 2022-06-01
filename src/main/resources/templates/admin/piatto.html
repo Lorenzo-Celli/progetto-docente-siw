@@ -9,7 +9,9 @@
 	<ul>
 		<li th:each="piatto : ${piatti}"><a th:text="${piatto.nome}">carbonara</a>
 			<span><a
-				th:href="@{/admin/chef/doDelete/{id}(id = ${chef.id})}">elimina</a></span>
+				th:href="@{/admin/piatto/doDelete/{id}(id = ${piatto.id})}">elimina</a></span>
+			<span><a
+				th:href="@{/admin/piatto/edit/{id}(id = ${piatto.id})}">modifica</a></span>
 		</li>
 	</ul>
 	<footer th:replace="fragments/base.html :: fondo(home='/default')">Home</footer>

@@ -12,7 +12,7 @@
 	<form action="#" th:action="@{/admin/piattoForm}" th:object="${piatto}"
 		method="post">
 		<div>
-			<span>Nome:</span> <span><input type="text" th:field="*{nome}" /></span>
+			<span>Nome:</span> <span><input type="text" th:field="*{nome}" required/></span>
 			<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
 		</div>
 		<div>
@@ -21,23 +21,13 @@
 				th:if="${#fields.hasErrors('descrizione')}"
 				th:errors="*{descrizione}"></span>
 		</div>
-		<h3>Ingredienti del piatto</h3>
+		<input type="hidden" th:field="*{id}" />
 		<div>
-			<span> <select th:field="*{ingredienti}">
-					<option th:each="ingrediente : ${ingredientiTotali}"
-						th:value="${ingrediente.id}"
-						th:text="${ingrediente.nome} + ' ' + ${ingrediente.origine}" />
-			</select>
-			</span> <span><button type="submit" name="action"
-					value="saveIngrediente">save</button></span>
 					<span><button
 					type="submit" name="action" value="aggiungiNuovi">aggiungi
-					tutti ingredienti</button></span>
+					tutti gli ingredienti</button></span>
 		</div>
-		<ul>
-			<li th:each="ingrediente : ${ingredienti}"><a
-				th:text="${ingrediente.nome}">cipolla tropea </a></li>
-		</ul>
 	</form>
+		<footer th:replace="fragments/base.html :: fondo(home='/default')">Home</footer>
 </body>
 </html>

@@ -2,7 +2,9 @@ package it.uniroma3.catering.siw.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,6 +19,7 @@ public class Piatto {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+
 	private String nome;
 	
 	private String descrizione;
@@ -24,7 +27,7 @@ public class Piatto {
 	@ManyToMany
 	private List<Buffet> buffets;
 
-	@OneToMany(mappedBy = "piatto")
+	@OneToMany(mappedBy = "piatto", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Ingrediente> ingredienti;
 	
 	public Long getId() {
@@ -65,6 +68,10 @@ public class Piatto {
 
 	public void setIngredienti(List<Ingrediente> ingredienti) {
 		this.ingredienti = ingredienti;
+	}
+	
+	public void addIngredienti(List<Ingrediente> ingredienti) {
+		this.ingredienti.addAll(ingredienti);
 	}
 	
 	

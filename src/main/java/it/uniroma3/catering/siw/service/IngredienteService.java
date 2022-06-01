@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.uniroma3.catering.siw.model.Ingrediente;
+import it.uniroma3.catering.siw.model.Piatto;
 import it.uniroma3.catering.siw.repository.IngredienteRepository;
 
 @Service
@@ -32,6 +33,16 @@ public class IngredienteService {
 			Ingredienti.add(b);
 		}
 		return Ingredienti;
+	}
+	
+	public List<Ingrediente> findByPiatto(Piatto p){
+		List<Ingrediente> ingredienti = new ArrayList<>();
+		for (Ingrediente i : ir.findAll()) {
+			if (i.getPiatto().equals(p)) {
+				ingredienti.add(i);
+			}
+		}
+		return ingredienti;
 	}
 	
 	@Transactional

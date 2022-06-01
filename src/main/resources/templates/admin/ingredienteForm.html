@@ -9,16 +9,14 @@
 	<form action="#" th:action="@{/admin/ingredienteForm}"
 		th:object="${ingrediente}" method="post">
 		<div>
-			<span>Nome:</span> <span><input type="text"
-				th:field="*{nome}" /></span> <span
-				th:if="${#fields.hasErrors('nome')}"
+			<span>Nome:</span> <span><input type="text" th:field="*{nome}"
+				required /></span> <span th:if="${#fields.hasErrors('nome')}"
 				th:errors="*{nome}"></span>
 		</div>
 		<div>
 			<span>Origine:</span> <span><input type="text"
 				th:field="*{origine}" /></span> <span
-				th:if="${#fields.hasErrors('origine')}"
-				th:errors="*{origine}"></span>
+				th:if="${#fields.hasErrors('origine')}" th:errors="*{origine}"></span>
 		</div>
 		<div>
 			<span>Descrizione:</span> <span><input type="text"
@@ -27,17 +25,24 @@
 				th:errors="*{descrizione}"></span>
 		</div>
 		<div>
-			<span>Piatto associato: </span>  <span> <select th:field="*{piatto}">
-					<option th:value="${piatto.id}"
-						th:text="${piatto.nome}" />
+			<span>Piatto associato: </span> <span> <select
+				th:field="*{piatto}">
+					<option th:value="${piatto.id}" th:text="${piatto.nome}" />
 			</select>
 			</span>
 		</div>
 		<div>
-			<button type="submit" name="action" value="finish">torna al piatto</button>
-			<button type="submit" name="action" value="keepAdding">continua ad aggiungere</button>
+			<button type="submit" name="action" value="finish">fine</button>
+			<button type="submit" name="action" value="keepAdding">continua
+				ad aggiungere</button>
 		</div>
-	</form>
-	<footer th:replace="fragments/base.html :: fondo(home='/admin')">Home</footer>
+			</form>
+			<h3 th:if="${piatto.ingredienti != null}">Ingredienti aggiunti</h3>
+		<ul>
+			<li th:each="ingrediente : ${ingredienti}"><a
+				th:text="${ingrediente.nome}">pancetta</a> <span><a
+					th:href="@{/admin/ingrediente/doDelete/{id}(id = ${ingrediente.id})}">elimina</a></span></li>
+		</ul>
+	<footer th:replace="fragments/base.html :: fondo(home='/default')">Home</footer>
 </body>
 </html>
