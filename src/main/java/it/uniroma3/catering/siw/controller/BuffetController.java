@@ -1,9 +1,5 @@
 package it.uniroma3.catering.siw.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -141,6 +137,19 @@ public class BuffetController {
 		model.addAttribute("buffets", buffetService.findAll());	
 		return "admin/buffet.html";
 	}
-
+	
+	/*+++++++++++++++++++++++++++++++++METODI LATO USER+++++++++++++++++++++++++++++++++++++++++*/
+	
+	@RequestMapping(value="/buffet", method = RequestMethod.GET)
+	public String visualizzaBuffets(Model model) {
+		model.addAttribute("buffets", buffetService.findAll());
+		return "elencoBuffets.html";
+	}
+	
+	@RequestMapping(value="/buffet/{id}", method = RequestMethod.GET)
+	public String visualizzaBuffet(Model model, @PathVariable("id") Long id) {
+		model.addAttribute("buffet", buffetService.findById(id));
+		return "buffet.html";
+	}
 
 }

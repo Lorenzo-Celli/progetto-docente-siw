@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>
+		<span th:text="${buffet.nome}">nome</span>
+	</h1>
+	<h3>
+		CHEF SUPERVISORE: <span th:text="${buffet.chef}"></span>
+	</h3>
+	<h3>ELENCO PIATTI</h3>
+	<ul>
+		<li th:each="piatto : ${buffet.piatti}"><span
+			th:text="${piatto.nome}">piatto1 </span></li>
+	</ul>
+	<div><a th:href="@{/buffet}">ritorna ai buffet</a> </div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+		<h1>ELENCO BUFFET:</h1>
+	<ul>
+		<li th:each="buffet : ${buffets}"><a
+			th:text="${buffet.nome}">buffet1 </a>
+		<span><a th:href="@{/buffet/{id}(id = ${buffet.id})}">visualizza</a></span>
+		</li> 
+	</ul>
+	<footer th:replace="fragments/base.html :: fondo(home='/default')">Home</footer>
+</body>
+</html>
