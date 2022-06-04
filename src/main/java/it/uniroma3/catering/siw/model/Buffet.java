@@ -2,7 +2,6 @@ package it.uniroma3.catering.siw.model;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,7 +23,7 @@ public class Buffet {
 	@ManyToOne()
 	private Chef chef;
 	
-	@ManyToMany(mappedBy = "buffets",cascade = CascadeType.ALL)
+	@ManyToMany(mappedBy = "buffets")
 	private List<Piatto> piatti;
 	
 	
@@ -70,5 +69,15 @@ public class Buffet {
 	}
 	
 	
+	/*funzione fatta in questo modo poichè andando ad eliminare
+	un piatto nella lista gli altri scalano e con un iterazione normale 
+	il puntatore non funziona*/
+	public void removeAllPiatti() {
+		
+		while(!this.getPiatti().isEmpty()) {
+			this.getPiatti().get(0).getBuffets().remove(this);
+			this.getPiatti().remove(0);
+		}
+	}
 	
 }

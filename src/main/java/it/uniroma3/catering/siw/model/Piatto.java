@@ -1,6 +1,7 @@
 package it.uniroma3.catering.siw.model;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -25,7 +26,7 @@ public class Piatto {
 	private String descrizione;
 	
 	@ManyToMany
-	private List<Buffet> buffets;
+	private Set<Buffet> buffets;
 
 	@OneToMany(mappedBy = "piatto", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Ingrediente> ingredienti;
@@ -54,11 +55,11 @@ public class Piatto {
 		this.descrizione = descrizione;
 	}
 
-	public List<Buffet> getBuffets() {
+	public Set<Buffet> getBuffets() {
 		return buffets;
 	}
 
-	public void setBuffets(List<Buffet> buffets) {
+	public void setBuffets(Set<Buffet> buffets) {
 		this.buffets = buffets;
 	}
 

@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 	<h1>ELENCO BUFFET:</h1>
+	<ul>
+		<li th:each="buffet : ${buffets}"><a th:text="${buffet.nome}">carbonara</a>
+			<span><a
+				th:href="@{/admin/buffet/doDelete/{id}(id = ${buffet.id})}">elimina</a></span>
+			<span><a
+				th:href="@{/admin/buffet/edit/{id}(id = ${buffet.id})}">modifica</a></span>
+		</li>
+	</ul>
+	<footer th:replace="fragments/base.html :: fondo(home='/default')">Home</footer>
 </body>
 </html>

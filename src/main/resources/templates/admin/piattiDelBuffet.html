@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+		<h1>ELENCO PIATTI:</h1>
+	<ul>
+		<li th:each="piatto : ${piatti}"><a th:text="${piatto.nome}">carbonara</a>
+		</li>
+	</ul>
+		<span><a th:href="@{/admin/buffetForm/return/{id}(id = ${buffet.id})}" >ritorna al buffet</a></span>
+</body>
+</html>

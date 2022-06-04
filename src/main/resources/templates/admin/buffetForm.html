@@ -36,9 +36,13 @@
 		<span><button type="submit" name="action" value="saveBuffet">salva tutto biascica</button></span>
 		<h3>Piatti:</h3>
 		<div>
-			<span>span</span> <span><a th:href="@{/admin/chefForm}">aggiungine
-					uno nuovo</a></span>
+			<span> <select th:field="*{piatti}">
+					<option th:each="piatto : ${piatti}" th:value="${piatto.id}"
+						th:text="${piatto.nome}" />
+			</select>
+			</span> <span><button type="submit" name="action" value="savePiatto">save</button></span>
+			<span th:if="${buffet.id != null}"> <a th:href="@{/admin/buffetForm/piatti/{id}(id = ${buffet.id})}">visualizza lista</a></span>
 		</div>
-
+			<input type="hidden" th:field="*{id}" />
 	</form>
 </body>

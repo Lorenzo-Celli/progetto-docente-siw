@@ -38,5 +38,11 @@ public class BuffetService {
 	public void delete(Buffet buffet) {
 		br.delete(buffet);
 	}
+	
+	
+	@Transactional
+	public void deleteById(Long id) {
+		br.deleteById(id);
+	}
 
 }
