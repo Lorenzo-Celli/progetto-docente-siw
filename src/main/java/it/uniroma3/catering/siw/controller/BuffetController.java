@@ -58,6 +58,7 @@ public class BuffetController {
 
 
 	}
+	
 
 	@RequestMapping(value="/admin/buffetForm/createChef", method = RequestMethod.GET)
 	public String createChef(Model model,
@@ -73,7 +74,7 @@ public class BuffetController {
 	}
 
 
-	@RequestMapping(value="/admin/buffetForm/createChef", method = RequestMethod.POST, params = "action=saveChef")
+	@RequestMapping(value="/admin/buffetForm/createChef", method = RequestMethod.POST, params = "action=salvaChef")
 	public String adddChef(Model model,
 			@ModelAttribute("chef") Chef c) {
 		chefService.save(c);
