@@ -9,7 +9,7 @@
 		<span th:text="${buffet.nome}">nome</span>
 	</h1>
 	<h3>
-		CHEF SUPERVISORE: <span th:text="${buffet.chef}"></span>
+		CHEF SUPERVISORE: <span th:text="${buffet.chef.nome} + ' ' + ${buffet.chef.cognome}"></span>
 	</h3>
 	<h3>ELENCO PIATTI</h3>
 	<ul>
