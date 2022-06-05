@@ -1,48 +1,39 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/base.html :: headerfiles(title='Registra Utente')"> </head>
+<head>
+<link rel="stylesheet" href="/css/login.css">
+</head>
 <body>
-	<header th:replace="fragments/base.html :: intestazione"></header>
-	<div>
-    	<h4 th:text="#{header.registra}">Registrazione</h4>
-	<form th:action="@{/register}" method="POST">
-    <table>
-        <tr>
-            <td>Username</td>
-            <td><input type="text" placeholder="username" required
-                       th:field="${credentials.username}"/></td>
-            <td th:if="${#fields.hasErrors('credentials.username')}"
-                th:errors="${credentials.username}" th:style="'color:red'"></td>
-        </tr>
-        <tr>
-            <td>Password</td>
-            <td><input type="password" placeholder="password" required
-                       th:field="${credentials.password}"/></td>
-            <td th:if="${#fields.hasErrors('credentials.password')}"
-                th:errors="${credentials.password}" th:style="'color:red'"></td>
-        </tr>
-        <tr>
-            <td>Nome</td>
-            <td><input type="text" placeholder="nome" required
-                       th:field="${user.nome}"/></td>
-            <td th:if="${#fields.hasErrors('user.nome')}"
-                th:errors="${user.nome}" th:style="'color:red'"></td>
-        </tr>
-        <tr>
-            <td>Cognome</td>
-            <td><input type="text" placeholder="cognome" required
-                       th:field="${user.cognome}"/></td>
-            <td th:if="${#fields.hasErrors('user.cognome')}"
-                th:errors="${user.cognome}" th:style="'color:red'"></td>
-        </tr>
-        <tr>
-            <td>
-                <button type="submit">Registra</button>
-            </td>
-        </tr>
-    </table>
-	</form>
-	</div>
-    <footer th:replace="fragments/base.html :: fondo(home='/')"></footer>
+    <header>
+        <h1>SIW CATERING</h1>
+    </header>
+    <main>
+        <form id="login_form" class="form_class" th:action="@{/register}"
+            method="POST">
+			<div class="title_div">REGISTRATI</div>
+            <div class="form_div">
+                <label>Username:</label> <input class="field_class" name="username"
+                    type="text" placeholder="Username" autofocus required th:field="${credentials.username}"> 
+
+                <label>Password:</label>
+                <input id="pass" class="field_class" name="password" type="password"
+                    placeholder="password" required th:field="${credentials.password}">
+
+                 <label>Nome:</label>
+                <input class="field_class" name="nome" type="text"
+                    placeholder="nome" required th:field="${user.nome}">
+
+                 <label>Cognome:</label>
+                <input class="field_class" name="cognome" type="text"
+                    placeholder="cognome" required th:field="${user.cognome}">
+                
+                <button class="submit_class" type="submit">REGISTER</button>
+            </div>
+        </form>
+    </main>
+    <footer>
+        <p>Realizzato da Lorenzo Celli</p>
+    </footer>
 </body>
 </html>
+

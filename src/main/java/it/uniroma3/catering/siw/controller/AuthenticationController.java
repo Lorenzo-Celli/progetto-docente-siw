@@ -36,11 +36,7 @@ public class AuthenticationController {
 		return "registerUser";
 	}
 	
-	@RequestMapping(value = "/login", method = RequestMethod.GET) 
-	public String showLoginForm (Model model) {
-		return "loginForm.html";
-	}
-	
+
 	@RequestMapping(value = "/logout", method = RequestMethod.GET) 
 	public String logout(Model model) {
 		return "index";

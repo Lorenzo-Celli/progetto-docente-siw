@@ -1,18 +1,34 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/base.html :: headerfiles(title='SIW')">
+<head>
+<link rel="stylesheet" href="/css/login.css">
 </head>
 <body>
-	<header th:replace="fragments/base.html :: intestazione"></header>
-	<div>
-		<h4 th:text="#{header.index}">Welcome Page</h4>
-		<div>
-			<a th:href="@{/login}" th:text="#{index.login}">Accedi</a>
-		</div>
-		<div>
-			<a th:href="@{/register}" th:text="#{index.register}">Registrati</a>
-		</div>
-	</div>
-	<footer th:replace="fragments/base.html :: fondo(home='/default')"></footer>
+	<header>
+		<h1>SIW CATERING</h1>
+	</header>
+	<main>
+		<form id="login_form" class="form_class" th:action="@{/login}"
+			method="POST">
+            <div class="title_div">LOGIN</div>
+			<div class="form_div">
+				<label>Username:</label> <input class="field_class" name="username"
+					type="text" placeholder="Username" autofocus required> 
+				<label>Password:</label>
+				<input id="pass" class="field_class" name="password" type="password"
+					placeholder="password" required>
+				<button class="submit_class" type="submit">LOGIN</button>
+			</div>
+			<div class="info_div">
+				<p>
+					Non hai ancora un account <a th:href="@{/register}">
+						Registrati!</a>
+				</p>
+			</div>
+		</form>
+	</main>
+    <footer>
+        <p>Realizzato da Lorenzo Celli</p>
+    </footer>
 </body>
 </html>

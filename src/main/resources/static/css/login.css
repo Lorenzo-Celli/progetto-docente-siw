@@ -11,7 +11,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 15vh;
+    height: 12vh;
     box-shadow: 5px 5px 10px rgb(0,0,0,0.3);
 }
 h1 {
@@ -24,7 +24,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 75vh;
+    height: 81vh;
     width: 100%;
     background: url(/images/background.jpg) no-repeat center center;
     background-size: cover;
@@ -37,6 +37,16 @@ main {
     font-family: 'system-ui';
     box-shadow: 5px 5px 10px rgb(0,0,0,0.3);
 }
+
+.title_div {
+    text-align: center;
+    margin-bottom:30px;
+    font-family: 'system-ui';
+    letter-spacing: 6px;
+    font-size: 25px;
+    font-style: italic;
+}
+
 .form_div {
     text-transform: uppercase;
 }
@@ -78,8 +88,24 @@ main {
     box-shadow: 2px 2px 5px rgb(0,0,0,0.2);
     cursor: pointer;
 }
+
+
+.box_class {
+    text-align: center;
+    width: 500px;
+    padding: 40px;
+    border-radius: 8px;
+    background-color: white;
+    font-family: 'system-ui';
+    box-shadow: 5px 5px 10px rgb(0,0,0,0.3);
+}
+
+.message_class{
+  font-size: 25px;
+}
+
 footer {
-    height: 10vh;
+    height: 7vh;
     background-color: black;
     color: white;
     display: flex;

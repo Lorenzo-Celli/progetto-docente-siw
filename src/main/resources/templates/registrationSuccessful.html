@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/base.html :: headerfiles(title='Esito registrazione')"> </head>
+<head>
+<link rel="stylesheet" href="/css/login.css">
+</head>
 <body>
-	<header th:replace="fragments/base.html :: intestazione"></header>
-	<div>
-    	<h4 th:text="#{header.registra}">Registrazione</h4>
-		<h1>Congratulazioni ti sei registrato!</h1>
-	</div>
-    <footer th:replace="fragments/base.html :: fondo(home='/')"></footer>
+	<header>
+		<h1>SIW CATERING</h1>
+	</header>
+	<main>
+      
+        <div class="box_class">
+          <div class="message_class">
+            Congratulazioni ti sei registrato con successo!</div>
+          <div class="info_div"><p><a th:href="@{/}">Home</p></div>
+      </div>
+  </main>
+    <footer>
+        <p>Realizzato da Lorenzo Celli</p>
+    </footer>
 </body>
 </html>
