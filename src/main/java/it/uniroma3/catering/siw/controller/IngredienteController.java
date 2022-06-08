@@ -1,6 +1,7 @@
 package it.uniroma3.catering.siw.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,7 +39,8 @@ public class IngredienteController {
 		
 		if (!bindingResult.hasErrors()) {
 			ingredienteService.save(ingrediente);
-			model.addAttribute("ingredienti",ingredienteService.findByPiatto(ingrediente.getPiatto()));
+			List<Ingrediente> ingredienti = ingredienteService.findByPiatto(ingrediente.getPiatto());
+			model.addAttribute("ingredienti", ingredienti);
 			model.addAttribute("piatto", ingrediente.getPiatto());
 			model.addAttribute("ingrediente", new Ingrediente());
 			return "admin/ingredienteForm.html";

@@ -1,6 +1,7 @@
 package it.uniroma3.catering.siw.model;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -74,6 +75,24 @@ public class Piatto {
 	public void addIngredienti(List<Ingrediente> ingredienti) {
 		this.ingredienti.addAll(ingredienti);
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Piatto other = (Piatto) obj;
+		return Objects.equals(id, other.id);
+	}
+	
 	
 	
 }

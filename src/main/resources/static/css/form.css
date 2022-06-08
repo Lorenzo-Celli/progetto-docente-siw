@@ -30,7 +30,7 @@
         display: block;
         min-width: 320px;
         max-width: 400px;
-        background-color: #9A936280 ;
+        background-color: #9A936288 ;
         margin: auto;
         padding: 40px;
         border-radius: 5px;
@@ -88,4 +88,27 @@
         cursor: pointer;
     }
 
+.elenco {
+        font-size: 21px;
+        font-family: 'Poppins', sans-serif;
+        margin-top: 20px;
+}
+
+
+ul {
+      padding-left: 40px;
+}
+
+.operations {
+        padding-left: 7em;
+  
+}
+
+li {
+      margin-top: 5px;
+}
+
+.hidden{
+  display:none;
+}
 

@@ -37,7 +37,8 @@ public class IngredienteService {
 	
 	public List<Ingrediente> findByPiatto(Piatto p){
 		List<Ingrediente> ingredienti = new ArrayList<>();
-		for (Ingrediente i : ir.findAll()) {
+		List<Ingrediente> tutti = this.findAll();
+		for (Ingrediente i : tutti) {
 			if (i.getPiatto().equals(p)) {
 				ingredienti.add(i);
 			}
