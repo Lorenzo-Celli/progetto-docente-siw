@@ -1,33 +1,31 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+<link rel="stylesheet" href="/css/form.css">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>>piatto</title>
 </head>
 <body>
-	<h3>
-		Piatto: <span th:if="${piatto.nome != null}"><span
-			th:text="${piatto.nome}"></span></span>
-	</h3>
-	<form action="#" th:action="@{/admin/piattoForm}" th:object="${piatto}"
+    <main>
+        <header>
+            <h1 id="title">PIATTO</h1>
+        </header>
+        <form id="survey-form" class="form" action="#" th:action="@{/admin/piattoForm}" th:object="${piatto}"
 		method="post">
-		<div>
-			<span>Nome:</span> <span><input type="text" th:field="*{nome}" required/></span>
-			<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
-		</div>
-		<div>
-			<span>Descrizione:</span> <span><input type="text"
-				th:field="*{descrizione}" /></span> <span
-				th:if="${#fields.hasErrors('descrizione')}"
-				th:errors="*{descrizione}"></span>
-		</div>
-		<input type="hidden" th:field="*{id}" />
-		<div>
-					<span><button
-					type="submit" name="action" value="aggiungiNuovi">aggiungi
-					tutti gli ingredienti</button></span>
-		</div>
-	</form>
-		<footer th:replace="fragments/base.html :: fondo(home='/default')">Home</footer>
+            <div class="fill">
+                <span>Nome:</span><br>
+                <input id="name" placeholder="inserisci un nome" type="text" th:field="*{nome}" required/>
+                <br>
+            </div>
+            <div class="descrizione">
+                <p>Descrizione:</p>
+                <textarea rows="5" cols="1" placeholder="Descrizione"  th:type="text"
+				th:field="*{descrizione}"></textarea>
+            </div>
+          <div><input type="hidden" th:field="*{id}" /></div>
+              <button type="submit" name="action" value="aggiungiNuovi">Vai agli ingredienti</button>
+        </form>
+      <footer><a th:href="@{/default}">Home</a></footer>
+    </main>
 </body>
 </html>
