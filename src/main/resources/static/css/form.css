@@ -12,7 +12,8 @@
     }
 
     main {
-        background: url("https://wallpapercave.com/wp/wp6981123.jpg");
+        background: url(/images/forms.jpg) no-repeat center center;
+        background-size: cover;
         width: 100vw;
         height: 100vh;
         position: absolute;
@@ -29,7 +30,7 @@
         display: block;
         min-width: 320px;
         max-width: 400px;
-        background-color: #391c3088;
+        background-color: #9A936280 ;
         margin: auto;
         padding: 40px;
         border-radius: 5px;
