@@ -8,10 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import it.uniroma3.catering.siw.model.Chef;
 import it.uniroma3.catering.siw.model.Ingrediente;
 import it.uniroma3.catering.siw.model.Piatto;
-import it.uniroma3.catering.siw.service.ChefService;
 import it.uniroma3.catering.siw.service.IngredienteService;
 import it.uniroma3.catering.siw.service.PiattoService;
 
@@ -24,8 +22,7 @@ public class PiattoController {
 	@Autowired
 	private IngredienteService ingredienteService;
 
-	@Autowired
-	private ChefService chefService;
+
 
 	@RequestMapping(value = "/admin/piatto", method = RequestMethod.GET) 
 	private String visualizzaPiatto(Model model) {

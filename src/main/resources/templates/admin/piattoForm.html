@@ -3,29 +3,39 @@
 <head>
 <link rel="stylesheet" href="/css/form.css">
 <meta charset="UTF-8">
-<title>>piatto</title>
+<title>SIW CATERING</title>
 </head>
 <body>
-    <main>
-        <header>
-            <h1 id="title">PIATTO</h1>
-        </header>
-        <form id="survey-form" class="form" action="#" th:action="@{/admin/piattoForm}" th:object="${piatto}"
-		method="post">
-            <div class="fill">
-                <span>Nome:</span><br>
-                <input id="name" placeholder="inserisci un nome" type="text" th:field="*{nome}" required/>
-                <br>
-            </div>
-            <div class="descrizione">
-                <p>Descrizione:</p>
-                <textarea rows="5" cols="1" placeholder="Descrizione"  th:type="text"
-				th:field="*{descrizione}"></textarea>
-            </div>
-          <div><input type="hidden" th:field="*{id}" /></div>
-              <button type="submit" name="action" value="aggiungiNuovi">Vai agli ingredienti</button>
-        </form>
-      <footer><a th:href="@{/default}">Home</a></footer>
-    </main>
+	<main>
+		<header>
+			<h1 id="title">PIATTO</h1>
+		</header>
+		<form id="survey-form" class="form" action="#"
+			th:action="@{/admin/piattoForm}" th:object="${piatto}" method="post">
+			<div class="fill">
+				<span>Nome:</span><br> <input id="name"
+					placeholder="inserisci un nome" type="text" th:field="*{nome}"
+					required /> <br>
+			</div>
+			<div class="descrizione">
+				<p>Descrizione:</p>
+				<textarea rows="5" cols="1" placeholder="Descrizione" th:type="text"
+					th:field="*{descrizione}"></textarea>
+			</div>
+			<div>
+				<input type="hidden" th:field="*{id}" />
+			</div>
+			<button type="submit" name="action" value="aggiungiNuovi">Vai
+				agli ingredienti</button>
+		</form>
+	</main>
+	<footer>
+		<div>
+			<ul>
+				<li><a th:href="@{/default}">Home</a></li>
+				<li><a th:href="@{/logout}">Logout</a></li>
+			</ul>
+		</div>
+	</footer>
 </body>
 </html>

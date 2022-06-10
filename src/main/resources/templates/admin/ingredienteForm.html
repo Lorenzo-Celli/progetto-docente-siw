@@ -3,7 +3,7 @@
 <head>
 <link rel="stylesheet" href="/css/form.css">
 <meta charset="UTF-8">
-<title>AGGIUNGI CHEF</title>
+<title>SIW CATERING</title>
 </head>
 <body>
 <body>
@@ -11,8 +11,9 @@
 		<header>
 			<h1 id="title">INGREDIENTI DEL PIATTO</h1>
 		</header>
-		<form id="survey-form" class="form" action="#" th:action="@{/admin/ingredienteForm}"
-			th:object="${ingrediente}" method="post">
+		<form id="survey-form" class="form" action="#"
+			th:action="@{/admin/ingredienteForm}" th:object="${ingrediente}"
+			method="post">
 			<div class="fill">
 				<span>Nome:</span><br> <input id="name"
 					placeholder="inserisci un nome" type="text" th:field="*{nome}"
@@ -28,26 +29,31 @@
 				<textarea rows="5" cols="1" placeholder="Descrizione" th:type="text"
 					th:field="*{descrizione}"></textarea>
 			</div>
-			 <div class="hidden">
-      <span>Piatto associato: </span> <span> <select
-        th:field="*{piatto}">
-          <option th:value="${piatto.id}" th:text="${piatto.nome}" />
-      </select>
-      </span>
-    </div>
+			<div class="hidden">
+				<span>Piatto associato: </span> <span> <select
+					th:field="*{piatto}">
+						<option th:value="${piatto.id}" th:text="${piatto.nome}" />
+				</select>
+				</span>
+			</div>
 			<button type="submit" name="action" value="keepAdding">Continua
 				ad aggiungere</button>
 			<div class="elenco" th:if="${piatto.ingredienti != null}">Ingredienti
 				aggiunti:</div>
 			<ul class="ul">
 				<li class="li" th:each="ingrediente : ${ingredienti}"><a
-					th:text="${ingrediente.nome}">pancetta</a> <span class="operations"><a
-						th:href="@{/admin/ingrediente/doDelete/{id}(id = ${ingrediente.id})}">elimina</a></span></li>
+					th:text="${ingrediente.nome}">pancetta</a> <span class="operations"><span
+						th:href="@{/admin/ingrediente/doDelete/{id}(id = ${ingrediente.id})}">elimina</span></span></li>
 			</ul>
 		</form>
-		<footer>
-			<a th:href="@{/default}">Home</a>
-		</footer>
 	</main>
+	<footer>
+		<div>
+			<ul>
+				<li><a th:href="@{/default}">Home</a></li>
+				<li><a th:href="@{/logout}">Logout</a></li>
+			</ul>
+		</div>
+	</footer>
 </body>
 </html>
