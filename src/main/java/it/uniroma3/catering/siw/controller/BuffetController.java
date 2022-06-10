@@ -43,19 +43,7 @@ public class BuffetController {
 	}
 
 
-	@RequestMapping(value="/admin/buffetForm", method = RequestMethod.POST, params = "action=saveChef")
-	public String addChef(Model model,
-			@ModelAttribute("buffet") Buffet b) {
-		Chef currentChef = b.getChef();
-		model.addAttribute("buffet", b);
-		model.addAttribute("chefs",chefService.findAll());
-		model.addAttribute("currentChef", currentChef);
-		return "admin/buffetForm.html";
-
-
-	}
 	
-
 	@RequestMapping(value="/admin/buffetForm/createChef", method = RequestMethod.GET)
 	public String createChef(Model model,
 			@ModelAttribute("buffet") Buffet b) {
@@ -69,7 +57,7 @@ public class BuffetController {
 
 	}
 
-
+//riceve il post della form chefForm compilata con il nuovo chef da aggiungere
 	@RequestMapping(value="/admin/buffetForm/createChef", method = RequestMethod.POST, params = "action=salvaChef")
 	public String adddChef(Model model,
 			@ModelAttribute("chef") Chef c) {
@@ -77,6 +65,7 @@ public class BuffetController {
 		model.addAttribute("buffet", new Buffet());
 		model.addAttribute("chefs",chefService.findAll());
 		model.addAttribute("currentChef", new Chef());
+		model.addAttribute("piatti", piattoService.findAll());
 		return "admin/buffetForm.html";
 
 

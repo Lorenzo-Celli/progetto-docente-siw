@@ -41,17 +41,18 @@
 			<div class="elenco" th:if="${piatto.ingredienti != null}">Ingredienti
 				aggiunti:</div>
 			<ul class="ul">
-				<li class="li" th:each="ingrediente : ${ingredienti}"><a
-					th:text="${ingrediente.nome}">pancetta</a> <span class="operations"><span
-						th:href="@{/admin/ingrediente/doDelete/{id}(id = ${ingrediente.id})}">elimina</span></span></li>
+				<li class="li" th:each="ingrediente : ${ingredienti}"><span
+					th:text="${ingrediente.nome}">pancetta</span> <span class="operations"><a class="link"
+						th:href="@{/admin/ingrediente/doDelete/{id}(id = ${ingrediente.id})}">elimina</a></span></li>
 			</ul>
+			<div class="link_button"><a th:href="@{/default}">Fine</a></div>
 		</form>
 	</main>
 	<footer>
 		<div>
 			<ul>
-				<li><a th:href="@{/default}">Home</a></li>
-				<li><a th:href="@{/logout}">Logout</a></li>
+				<li><a  th:href="@{/default}">Home</a></li>
+				<li><a  th:href="@{/logout}">Logout</a></li>
 			</ul>
 		</div>
 	</footer>

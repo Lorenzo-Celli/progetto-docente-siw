@@ -1,28 +1,51 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8" />
+<link rel="stylesheet" href="/css/form.css">
+<meta charset="UTF-8">
 <title>SIW CATERING</title>
 </head>
 <body>
-	<h1>Aggiungi una persona</h1>
-	<form action="#" th:action="@{/admin/{idPage}(idPage=${currentPath})}" th:object="${chef}" method="post">
-	    <div>
-			<span>Nome:</span> <span><input type="text" th:field="*{nome}" required/></span>
-			<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
-		</div>
+	<main>
+		<header>
+			<h1 id="title">CHEF</h1>
+		</header>
+		<form id="survey-form" class="form" action="#"
+			th:action="@{/admin/{idPage}(idPage=${currentPath})}"
+			th:object="${chef}" method="post">
+			<div class="fill">
+				<span>Nome:</span><br> <input id="name"
+					placeholder="inserisci un nome" type="text" th:field="*{nome}"
+					required /> <br>
+			</div>
+			<div class="fill">
+				<span>Cognome:</span><br> <input id="name"
+					placeholder="inserisci un cognome" type="text"
+					th:field="*{cognome}" required /> <br>
+			</div>
+			<div class="fill">
+				<span>Nazionalità:</span><br> <input id="name"
+					placeholder="inserisci la nazionalità" type="text"
+					th:field="*{nazionalita}" /> <br>
+			</div>
+			<div>
+				<input type="hidden" th:field="*{id}" />
+			</div>
+			<div th:if="${currentPath} == 'chefForm' ">
+				<button type="submit" name="action" value="salvaChefDalloChef">Conferma</button>
+			</div>
+			<div th:if="${currentPath} == 'buffetForm/createChef' ">
+				<button type="submit" name="action" value="salvaChef">salva e torna al buffet</button>
+			</div>
+		</form>
+	</main>
+	<footer>
 		<div>
-			<span>Cognome:</span> <span><input type="text" th:field="*{cognome}" /></span>
-			<span th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></span>
+			<ul>
+				<li><a th:href="@{/default}">Home</a></li>
+				<li><a th:href="@{/logout}">Logout</a></li>
+			</ul>
 		</div>
-		<div>
-			<span>Nazionalità:</span> <span><input type="text" th:field="*{nazionalita}" /></span>
-			<span th:if="${#fields.hasErrors('nazionalita')}" th:errors="*{nazionalita}"></span>
-		</div>
-		<div>
-			<span><button type="submit" name="action" value="salvaChef">Conferma</button></span>
-		</div>
-	</form>
-	    <footer th:replace="fragments/base.html :: fondo(home='/default')">Home</footer>
+	</footer>
 </body>
 </html>

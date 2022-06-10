@@ -1,48 +1,57 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8" />
+<link rel="stylesheet" href="/css/form.css">
+<meta charset="UTF-8">
 <title>SIW CATERING</title>
 </head>
 <body>
-	<h3>
-		Buffet: <span th:if="${buffet.nome != null}"><span
-			th:text="${buffet.nome}"></span></span>
-	</h3>
-	<form action="#" th:action="@{/admin/buffetForm}" th:object="${buffet}"
-		method="post">
-		<div>
-			<span>Nome:</span> <span><input type="text" th:field="*{nome}" required/></span>
-			<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
-		</div>
-		<div>
-			<span>Descrizione:</span> <span><input type="text" height="20"
-				th:field="*{descrizione}" /></span> <span
-				th:if="${#fields.hasErrors('descrizione')}"
-				th:errors="*{descrizione}"></span>
-		</div>
-		<h3>
-			<span>Chef associato:</span><span th:if="${currentChef.nome != null}"><span
-				th:text="${currentChef.nome} + ' ' + ${currentChef.cognome}"></span></span>
-		</h3>
-		<div>
-			<span> <select th:field="*{chef}">
+<body>
+	<main>
+		<header>
+			<h1 id="title">BUFFET</h1>
+		</header>
+		<form id="survey-form" class="form" action="#"
+			th:action="@{/admin/buffetForm}" th:object="${buffet}"
+			method="post">
+			<div class="fill">
+				<span>Nome:</span><br> <input id="name"
+					placeholder="inserisci un nome" type="text" th:field="*{nome}"
+					required /> <br>
+			</div>
+			<div class="descrizione">
+				<p>Descrizione:</p>
+				<textarea rows="5" cols="1" placeholder="Descrizione" th:type="text"
+					th:field="*{descrizione}"></textarea>
+          </div>
+            <div class="choice">
+              <p>Chef:</p>
+			<select th:field="*{chef}">
 					<option th:each="chef : ${chefs}" th:value="${chef.id}"
-						th:text="${chef.nome} + ' ' + ${chef.cognome}" />
+						th:text="${chef.nome} + ' ' + ${chef.cognome}">chef</option>
 			</select>
-			</span> <span><button type="submit" name="action" value="saveChef">save</button></span>
-			<span> <a th:href="@{/admin/buffetForm/createChef}"> crea nuovo</a></span>
-		</div>
-		<h3>Piatti:</h3>
-		<div>
-			<span> <select th:field="*{piatti}">
+			<div class="link_button"><a th:href="@{/admin/buffetForm/createChef}">Aggiungi nuovo</a></div>
+          <div class="choice">
+            <p>Piatti:</p>
+            <select th:field="*{piatti}">
 					<option th:each="piatto : ${piatti}" th:value="${piatto.id}"
-						th:text="${piatto.nome}" />
+                            th:text="${piatto.nome}">piatto</option>
 			</select>
-			</span> <span><button type="submit" name="action" value="savePiatto">save</button></span>
-			<span th:if="${buffet.id != null}"> <a th:href="@{/admin/buffetForm/piatti/{id}(id = ${buffet.id})}">visualizza lista</a></span>
-		</div>
+            <div><button type="submit" name="action" value="savePiatto">Aggiungi</button></div>
+            <div class="link_button" th:if="${buffet.id != null}"> <a th:href="@{/admin/buffetForm/piatti/{id}(id = ${buffet.id})}">Visualizza lista piatti</a></div>
+          </div>
+              </div>
 			<input type="hidden" th:field="*{id}" />
-	</form>
-	<div><a th:href="@{/default}">fine</a></div>
+			<div class="link_button"><a th:href="@{/default}">Fine</a></div>
+		</form>
+	</main>
+	<footer>
+		<div>
+			<ul>
+				<li><a  th:href="@{/default}">Home</a></li>
+				<li><a  th:href="@{/logout}">Logout</a></li>
+			</ul>
+		</div>
+	</footer>
 </body>
+</html>

@@ -16,6 +16,7 @@ import it.uniroma3.catering.siw.model.Buffet;
 import it.uniroma3.catering.siw.model.Chef;
 import it.uniroma3.catering.siw.service.BuffetService;
 import it.uniroma3.catering.siw.service.ChefService;
+import it.uniroma3.catering.siw.service.PiattoService;
 
 @Controller
 public class ChefController {
@@ -29,6 +30,9 @@ public class ChefController {
 	@Autowired
 	private BuffetService buffetService;
 	
+	@Autowired
+	private PiattoService piattoService;
+	
 	@RequestMapping(value="/admin/chef", method = RequestMethod.GET)
 	public String getBuffets(Model model) {
 		List<Chef> chefs = chefService.findAll();
@@ -38,6 +42,8 @@ public class ChefController {
 	
 	@RequestMapping(value="/admin/chefForm", method = RequestMethod.GET)
 	public String addBuffets(Model model) {
+		String cp = "chefForm";
+		model.addAttribute("currentPath",cp);
 		model.addAttribute("chef", new Chef());
 		return "admin/chefForm.html";
 	}
@@ -57,7 +63,7 @@ public class ChefController {
 	}
 	
 	
-	@RequestMapping(value="/admin/chefForm", method = RequestMethod.POST)
+	@RequestMapping(value="/admin/chefForm", method = RequestMethod.POST, params = "action=salvaChefDalloChef")
 	public String addBuffetss(@ModelAttribute("chef") Chef chef,
             				BindingResult bindingResult,
             				Model model) {
@@ -78,11 +84,10 @@ public class ChefController {
 	public String adddChef(Model model,
 						@ModelAttribute("chef") Chef c) {
 		chefService.save(c);
-		Buffet tmp = buffetService.findById(4L);
-		model.addAttribute("buffet", tmp);
+		model.addAttribute("buffet", new Buffet());
 		model.addAttribute("chefs",chefService.findAll());
-		model.addAttribute("currentChef", tmp.getChef());
-		buffetService.delete(tmp);
+		model.addAttribute("currentChef", new Chef());
+		model.addAttribute("piatti", piattoService.findAll());
 		return "admin/buffetForm.html";
 		
 		
