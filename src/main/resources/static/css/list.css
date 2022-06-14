@@ -1,0 +1,109 @@
+
+body {
+  background-image: url("https://images02.nicepage.com/c461c07a441a5d220e8feb1a/892364894fd35bc8867dd5be/wdq-min.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+    background-position: top;
+    background-color: black;
+
+}
+
+
+#flex-container{
+    padding-top: 40vh;
+    padding-bottom: 20vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    display: grid;
+    margin-right:  calc(((100% - 820px) / 2));
+    margin-left: calc(((100% - 820px) / 2));
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.flex-item{
+    border-radius: 10px;
+    background-color: #3c3b3d;
+    height: auto;
+    width: auto;
+    flex-grow:1;
+    margin: 7px;
+}
+
+.flex-item > div{
+  color:white;
+} 
+
+
+footer ul {
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-gap: 24px;
+  margin: auto;
+}
+
+
+footer li {
+    list-style-type: none;
+    color: white;
+    padding-top: 22px;
+}
+
+footer div {
+  display: flex;
+  width: 100%;
+  line-height: 1.3;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background:  url("https://c.wallhere.com/photos/67/88/texture-225653.jpg!d");
+} 
+
+
+
+
+    a {
+    color: white;
+    margin-right: 4px;
+}
+
+p.links {
+    padding-left: 33px;
+    padding-right: 33px;
+    text-align:center;
+} 
+
+/*TEXT DEI FLEXBOX*/
+
+
+p.section-description{
+    text-align: center;
+    font-family: Roboto,sans-serif;
+    font-size: 25px;
+    margin-bottom: -4px;
+    letter-spacing: 0.2vw;
+    text-transform: uppercase;
+    padding-left: 22px;
+    padding-right: 22px;
+}
+
+p.description {
+    color: #b3b3b3 ;
+    font-family: 'Open Sans',sans-serif;
+    font-style: oblique;
+    padding-left: 33px;
+    padding-right: 33px;
+}
+
+p.subtitle  {
+  color: #b3b3b3 ;
+  font-family: 'Open Sans',sans-serif;
+  text-align:center;
+  padding-left: 33px;
+  padding-right: 33px;
+}
+

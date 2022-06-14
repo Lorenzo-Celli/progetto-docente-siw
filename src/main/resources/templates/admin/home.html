@@ -1,50 +1,67 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8" />
+<link rel="stylesheet" href="/css/home.css">
+<meta charset="UTF-8">
 <title>SIW CATERING</title>
 </head>
 <body>
-	<header th:replace="fragments/base.html :: intestazione"></header>
-    <div>
-    	<h4 th:text="#{header.menuAdmin}">Menu</h4>
+	<main>
+		<div id="flex-container">
+			<div class="flex-item">
+				<div class="text_container">
+					<p class="section-description">BUFFETS</p>
+					<p class="links">
+						<span> <a th:href="@{/admin/buffet}">VISUALIZZA E
+								MODIFICA</a>
+						</span>
+					</p>
+					<p class="links">
+						<span> <a th:href="@{/admin/buffetForm}">INSERISCI
+								NUOVO</a>
+						</span>
+					</p>
+				</div>
+			</div>
+
+			<div class="flex-item">
+				<div class="text_container">
+					<p class="section-description">PIATTI</p>
+					<p class="links">
+						<span> <a th:href="@{/admin/piatto}">VISUALIZZA E
+								MODIFICA</a>
+						</span>
+					</p>
+					<p class="links">
+						<span> <a th:href="@{/admin/piattoForm}">INSERISCI
+								NUOVO</a>
+						</span>
+					</p>
+				</div>
+			</div>
+
+			<div class="flex-item">
+				<div class="text_container">
+					<p class="section-description">CHEFS</p>
+					<p class="links">
+						<span> <a th:href="@{/admin/chef}">VISUALIZZA E
+								MODIFICA</a>
+						</span>
+					</p>
+					<p class="links">
+						<span> <a th:href="@{/admin/chefForm}">INSERISCI NUOVO</a>
+						</span>
+					</p>
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer>
 		<div>
-			<span> 
-				BUFFETS
-			</span>
-			<span>
-				<a th:href="@{/admin/buffet}" >visualizza e modifica</a>     
-			</span>
-			<span>
-				<a th:href="@{/admin/buffetForm}">inserisci nuovo</a>     
-			</span>
-   		</div>
-   		<div>
-			<span> 
-				CHEFS
-			</span>
-			<span>
-				<a th:href="@{/admin/chef}" >visualizza e modifica</a>     
-			</span>
-			<span>
-				<a th:href="@{/admin/chefForm}">inserisci nuovo</a>     
-			</span>
-   		</div>
-   		<div>
-			<span> 
-				PIATTO
-			</span>
-			<span>
-				<a th:href="@{/admin/piatto}" >visualizza e modifica</a>     
-			</span>
-			<span>
-				<a th:href="@{/admin/piattoForm}">inserisci nuovo</a>     
-			</span>
-   		</div>
-   		<div>
-			<a th:href="@{/logout}">Logout</a>
-   		</div>
-    </div>
-    <footer th:replace="fragments/base.html :: fondo(home='/default')"></footer>
+			<ul>
+				<li><a th:href="@{/logout}">Logout</a></li>
+			</ul>
+		</div>
+	</footer>
 </body>
 </html>

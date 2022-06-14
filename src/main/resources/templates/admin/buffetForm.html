@@ -12,8 +12,7 @@
 			<h1 id="title">BUFFET</h1>
 		</header>
 		<form id="survey-form" class="form" action="#"
-			th:action="@{/admin/buffetForm}" th:object="${buffet}"
-			method="post">
+			th:action="@{/admin/buffetForm}" th:object="${buffet}" method="post">
 			<div class="fill">
 				<span>Nome:</span><br> <input id="name"
 					placeholder="inserisci un nome" type="text" th:field="*{nome}"
@@ -23,33 +22,42 @@
 				<p>Descrizione:</p>
 				<textarea rows="5" cols="1" placeholder="Descrizione" th:type="text"
 					th:field="*{descrizione}"></textarea>
-          </div>
-            <div class="choice">
-              <p>Chef:</p>
-			<select th:field="*{chef}">
+			</div>
+			<div class="choice">
+				<p>Chef:</p>
+				<select th:field="*{chef}">
 					<option th:each="chef : ${chefs}" th:value="${chef.id}"
 						th:text="${chef.nome} + ' ' + ${chef.cognome}">chef</option>
-			</select>
-			<div class="link_button"><a th:href="@{/admin/buffetForm/createChef}">Aggiungi nuovo</a></div>
-          <div class="choice">
-            <p>Piatti:</p>
-            <select th:field="*{piatti}">
-					<option th:each="piatto : ${piatti}" th:value="${piatto.id}"
-                            th:text="${piatto.nome}">piatto</option>
-			</select>
-            <div><button type="submit" name="action" value="savePiatto">Aggiungi</button></div>
-            <div class="link_button" th:if="${buffet.id != null}"> <a th:href="@{/admin/buffetForm/piatti/{id}(id = ${buffet.id})}">Visualizza lista piatti</a></div>
-          </div>
-              </div>
+				</select>
+				<div class="link_button">
+					<a th:href="@{/admin/buffetForm/createChef}">Aggiungi nuovo</a>
+				</div>
+				<div class="choice">
+					<p>Piatti:</p>
+					<select th:field="*{piatti}">
+						<option th:each="piatto : ${piatti}" th:value="${piatto.id}"
+							th:text="${piatto.nome}">piatto</option>
+					</select>
+					<div>
+						<button type="submit" name="action" value="savePiatto">Aggiungi</button>
+					</div>
+					<div class="link_button" th:if="${buffet.id != null}">
+						<a th:href="@{/admin/buffetForm/piatti/{id}(id = ${buffet.id})}">Visualizza
+							lista piatti</a>
+					</div>
+				</div>
+			</div>
 			<input type="hidden" th:field="*{id}" />
-			<div class="link_button"><a th:href="@{/default}">Fine</a></div>
+			<div>
+				<button type="submit" name="action" value="saveAll">Fine</button>
+			</div>
 		</form>
 	</main>
 	<footer>
 		<div>
 			<ul>
-				<li><a  th:href="@{/default}">Home</a></li>
-				<li><a  th:href="@{/logout}">Logout</a></li>
+				<li><a th:href="@{/default}">Home</a></li>
+				<li><a th:href="@{/logout}">Logout</a></li>
 			</ul>
 		</div>
 	</footer>

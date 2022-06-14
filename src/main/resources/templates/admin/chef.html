@@ -1,20 +1,38 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+<link rel="stylesheet" href="/css/list.css">
 <meta charset="UTF-8" />
 <title>SIW CATERING</title>
 </head>
 <body>
-	<h1>ELENCO CHEFS:</h1>
-	<ul>
-		<li th:each="chef : ${chefs}"><a
-			th:text="${chef.nome} + ' ' + ${chef.cognome} + ' ' + ${chef.nazionalita}">paolo
-				rossi italiano </a>
-		<span><a th:href="@{/admin/chef/doDelete/{id}(id = ${chef.id})}">elimina</a></span>
-		</li> 
-	</ul>
-	<footer th:replace="fragments/base.html :: fondo(home='/default')">Home</footer>
+	<main>
+		<div id="flex-container">
+			<div class="flex-item" th:each="chef : ${chefs}">
+				<div class="text_container">
+					<p class="section-description"
+						th:text="${chef.nome} + ' ' + ${chef.cognome}">carlo cracco</p>
+					<p class="subtitle" th:text="${chef.nazionalita}">nazionalità</p>
+					<p class="links">
+						<span> <a
+							th:href="@{/admin/chef/doDelete/{id}(id = ${chef.id})}">ELIMINA</a>
+						</span>
+					</p>
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer>
+		<div>
+			<ul>
+				<li><a th:href="@{/default}">Home</a></li>
+				<li><a th:href="@{/logout}">Logout</a></li>
+			</ul>
+		</div>
+	</footer>
 </body>
 </html>
+
+
 
 

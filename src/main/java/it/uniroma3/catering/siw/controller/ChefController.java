@@ -48,17 +48,11 @@ public class ChefController {
 		return "admin/chefForm.html";
 	}
 	
+
 	@RequestMapping(value="/admin/chef/doDelete/{id}", method = RequestMethod.GET)
 	public String doDelete(@PathVariable("id") Long id, Model model) {
-		model.addAttribute(this.chefService.findById(id));
-		return "admin/doDelete.html";
-	}
-	
-	@RequestMapping(value="/admin/confirmDelete/{id}", method = RequestMethod.GET)
-	public String confirmDelete(@PathVariable("id") Long id, Model model) {
-		this.chefService.delete(this.chefService.findById(id));
-		List<Chef> chefs = chefService.findAll();
-		model.addAttribute("chefs", chefs);
+		chefService.delete(chefService.findById(id));
+		model.addAttribute("chefs", chefService.findAll());
 		return "admin/chef.html";
 	}
 	

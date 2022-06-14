@@ -1,19 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+<link rel="stylesheet" href="/css/list.css">
 <meta charset="UTF-8">
 <title>SIW CATERING</title>
 </head>
 <body>
-	<h1>ELENCO BUFFET:</h1>
-	<ul>
-		<li th:each="buffet : ${buffets}"><a th:text="${buffet.nome}">carbonara</a>
-			<span><a
-				th:href="@{/admin/buffet/doDelete/{id}(id = ${buffet.id})}">elimina</a></span>
-			<span><a
-				th:href="@{/admin/buffet/edit/{id}(id = ${buffet.id})}">modifica</a></span>
-		</li>
-	</ul>
-	<footer th:replace="fragments/base.html :: fondo(home='/default')">Home</footer>
+	<main>
+		<div id="flex-container">
+			<div class="flex-item" th:each="buffet : ${buffets}">
+				<div class="text_container">
+					<p class="section-description" th:text="${buffet.nome}">buffet1</p>
+					<p class="description" th:text="${buffet.descrizione}">DESCRIZIONE</p>
+					<p class="links">
+						<span> <a
+							th:href="@{/admin/buffet/doDelete/{id}(id = ${buffet.id})}">ELIMINA</a>
+						</span> <span> <a
+							th:href="@{/admin/buffet/edit/{id}(id = ${buffet.id})}">MODIFICA</a>
+						</span>
+					</p>
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer>
+		<div>
+			<ul>
+				<li><a th:href="@{/default}">Home</a></li>
+				<li><a th:href="@{/logout}">Logout</a></li>
+			</ul>
+		</div>
+	</footer>
 </body>
 </html>
+

@@ -109,6 +109,12 @@ public class BuffetController {
 	}
 	
 
+	@RequestMapping(value="/admin/buffetForm", method = RequestMethod.POST ,  params = "action=saveAll")
+	public String fineBuffet(Model model, @ModelAttribute("buffet") Buffet b) {
+		buffetService.save(b);
+		return "redirect:/default";
+	}
+	
 	@RequestMapping(value="/admin/buffetForm/return/{id}", method = RequestMethod.GET)
 	public String addBuffets(Model model,@PathVariable("id") Long id) {
 		model.addAttribute("piatti", piattoService.findAll());
@@ -126,6 +132,15 @@ public class BuffetController {
 		model.addAttribute("buffets", buffetService.findAll());	
 		return "admin/buffet.html";
 	}
+	
+	@RequestMapping(value="/admin/buffet/edit/{id}", method = RequestMethod.GET)
+	public String editBuffet(Model model,@PathVariable("id") Long id) {
+		model.addAttribute("piatti", piattoService.findAll());
+		model.addAttribute("chefs",chefService.findAll());
+		model.addAttribute("buffet", buffetService.findById(id));	
+		return "admin/buffetForm.html";
+	}
+	
 	
 	/*+++++++++++++++++++++++++++++++++METODI LATO USER+++++++++++++++++++++++++++++++++++++++++*/
 	
