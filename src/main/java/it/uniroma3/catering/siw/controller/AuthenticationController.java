@@ -14,6 +14,7 @@ import it.uniroma3.catering.siw.controller.validator.CredentialsValidator;
 import it.uniroma3.catering.siw.controller.validator.UserValidator;
 import it.uniroma3.catering.siw.model.Credentials;
 import it.uniroma3.catering.siw.model.User;
+import it.uniroma3.catering.siw.service.BuffetService;
 import it.uniroma3.catering.siw.service.CredentialsService;
 
 
@@ -28,6 +29,9 @@ public class AuthenticationController {
 	
 	@Autowired
 	private CredentialsValidator credentialsValidator;
+	
+	@Autowired
+	private BuffetService buffetService;
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET) 
 	public String showRegisterForm (Model model) {
@@ -50,6 +54,7 @@ public class AuthenticationController {
     	if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
             return "admin/home";
         }
+    	model.addAttribute("buffets", buffetService.findAll());
         return "home";
     }
 	

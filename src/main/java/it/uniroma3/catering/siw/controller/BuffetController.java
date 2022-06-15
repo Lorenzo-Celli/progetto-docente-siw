@@ -144,12 +144,12 @@ public class BuffetController {
 	
 	/*+++++++++++++++++++++++++++++++++METODI LATO USER+++++++++++++++++++++++++++++++++++++++++*/
 	
-	@RequestMapping(value="/buffet", method = RequestMethod.GET)
-	public String visualizzaBuffets(Model model) {
-		model.addAttribute("buffets", buffetService.findAll());
-		return "elencoBuffets.html";
-	}
-	
+//	@RequestMapping(value="/buffet", method = RequestMethod.GET)
+//	public String visualizzaBuffets(Model model) {
+//		model.addAttribute("buffets", buffetService.findAll());
+//		return "elencoBuffets.html";
+//	}
+//	
 	@RequestMapping(value="/buffet/{id}", method = RequestMethod.GET)
 	public String visualizzaBuffet(Model model, @PathVariable("id") Long id) {
 		model.addAttribute("buffet", buffetService.findById(id));

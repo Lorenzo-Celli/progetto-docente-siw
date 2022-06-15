@@ -1,21 +1,30 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8" />
+<link rel="stylesheet" href="/css/list.css">
+<meta charset="UTF-8">
 <title>SIW CATERING</title>
 </head>
 <body>
-	<header th:replace="fragments/base.html :: intestazione"></header>
-    <div>
-    	<h4 th:text="#{header.menuUtente}">Menu</h4>
+	<div class="main">
+		<div class="maincard">
+			<div class="subcard" th:each="buffet : ${buffets}">
+				<h3 th:text="${buffet.nome}">buffet1</h3>
+				<p th:text="${buffet.descrizione}">DESCRIZIONE</p>
+				<div class="links">
+					<span> <a th:href="@{/buffet/{id}(id = ${buffet.id})}">VISUALIZZA</a>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>
 		<div>
-			<a href="prodotto" th:href="@{/buffet}">Elenco buffets</a>
-   		</div>
-   		<div>
-			<a th:href="@{/logout}">Logout</a>
-   		</div>
-   		
-    </div>
-    <footer th:replace="fragments/base.html :: fondo(home='/default')"></footer>
+			<ul>
+				<li><a th:href="@{/logout}">Logout</a></li>
+			</ul>
+		</div>
+	</footer>
 </body>
 </html>
+

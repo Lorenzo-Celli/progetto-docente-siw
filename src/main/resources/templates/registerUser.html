@@ -6,36 +6,34 @@
 <title>SIW CATERING</title>
 </head>
 <body>
-    <header>
-        <h1>SIW CATERING</h1>
-    </header>
-    <main>
-        <form id="login_form" class="form_class" th:action="@{/register}"
-            method="POST">
+	<header>
+		<h1>SIW CATERING</h1>
+	</header>
+	<main>
+		<form id="login_form" class="form_class" th:action="@{/register}"
+			method="POST">
 			<div class="title_div">REGISTRATI</div>
-            <div class="form_div">
-                <label>Username:</label> <input class="field_class" name="username"
-                    type="text" placeholder="Username" autofocus required th:field="${credentials.username}"> 
+			<div class="form_div">
+				<label>Username:</label> <input class="field_class" name="username"
+					type="text" placeholder="Username" autofocus required
+					th:field="${credentials.username}"> <label>Password:</label>
+				<input id="pass" class="field_class" name="password" type="password"
+					placeholder="password" required th:field="${credentials.password}">
 
-                <label>Password:</label>
-                <input id="pass" class="field_class" name="password" type="password"
-                    placeholder="password" required th:field="${credentials.password}">
+				<label>Nome:</label> <input class="field_class" name="nome"
+					type="text" placeholder="nome" required th:field="${user.nome}">
 
-                 <label>Nome:</label>
-                <input class="field_class" name="nome" type="text"
-                    placeholder="nome" required th:field="${user.nome}">
+				<label>Cognome:</label> <input class="field_class" name="cognome"
+					type="text" placeholder="cognome" required
+					th:field="${user.cognome}">
 
-                 <label>Cognome:</label>
-                <input class="field_class" name="cognome" type="text"
-                    placeholder="cognome" required th:field="${user.cognome}">
-                
-                <button class="submit_class" type="submit">REGISTER</button>
-            </div>
-        </form>
-    </main>
-    <footer>
-        <p>Realizzato da Lorenzo Celli</p>
-    </footer>
+				<button class="submit_class" type="submit">REGISTER</button>
+			</div>
+		</form>
+	</main>
+	<footer>
+		<p>Realizzato da Lorenzo Celli</p>
+	</footer>
 </body>
 </html>
 

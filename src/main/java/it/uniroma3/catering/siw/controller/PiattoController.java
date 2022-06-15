@@ -69,5 +69,13 @@ public class PiattoController {
 		model.addAttribute("piatto", piattoService.findById(id));
 		return "admin/piattoForm.html";
 	}
+	
+	// LATO USER
+	
+	@RequestMapping(value = "/piatto/{id}", method = RequestMethod.GET) 
+	private String piatto(@PathVariable("id") Long id,Model model) {
+		model.addAttribute("piatto", piattoService.findById(id));
+		return "/piatto.html";
+	}
 
 }

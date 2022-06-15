@@ -8,23 +8,22 @@
 <body>
 	<div class="main">
 		<div class="innerdiv">
-			<h1 th:text="${buffet.nome}">
+			<h1 th:text="${piatto.nome}">
 				<img src="https://img.icons8.com/plasticine/40/000000/pancake.png"
 					alt="Dessert" />Buffet Romano
 			</h1>
-			<p th:text="${buffet.descrizione}">Lorem ipsum dolor sit amet,
+			<p th:text="${piatto.descrizione}">Lorem ipsum dolor sit amet,
 				consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
 				labore et dolore magna aliqua.</p>
 			<div class="maincard">
-				<div class="subcard" th:each="piatto : ${buffet.piatti}">
-					<a th:href="@{/piatto/{id}(id = ${piatto.id})}">
-						<h3 th:text="${piatto.nome}">carbonara</h3>
-						<p th:text="${piatto.descrizione}">Lorem ipsum, dolor sit amet
-							consectetur adipisicing elit. Unde cum ea nesciunt excepturi?
-							Optio non error reprehenderit deserunt ut, suscipit placeat
-							laborum distinctio dolores dolorum!</p>
-					</a>
+				<div class="subcard" th:each="ingrediente : ${piatto.ingredienti}">
+					<h3 th:text="${ingrediente.nome}">carbonara</h3>
+					<p th:text="${ingrediente.descrizione}">Lorem ipsum, dolor sit
+						amet consectetur adipisicing elit. Unde cum ea nesciunt excepturi?
+						Optio non error reprehenderit deserunt ut, suscipit placeat
+						laborum distinctio dolores dolorum!</p>
 				</div>
+
 			</div>
 		</div>
 	</div>

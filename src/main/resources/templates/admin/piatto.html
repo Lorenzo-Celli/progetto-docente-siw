@@ -6,23 +6,21 @@
 <title>SIW CATERING</title>
 </head>
 <body>
-	<main>
-		<div id="flex-container">
-			<div class="flex-item" th:each="piatto : ${piatti}">
-				<div class="text_container">
-					<p class="section-description" th:text="${piatto.nome}">CARBONARA</p>
-					<p class="description" th:text="${piatto.descrizione}">DESCRIZIONE</p>
-					<p class="links">
-						<span> <a
-							th:href="@{/admin/piatto/doDelete/{id}(id = ${piatto.id})}">ELIMINA</a>
-						</span> <span> <a
-							th:href="@{/admin/piatto/edit/{id}(id = ${piatto.id})}">MODIFICA</a>
-						</span>
-					</p>
+	<div class="main">
+		<div class="maincard">
+			<div class="subcard" th:each="piatto : ${piatti}">
+				<h3 th:text="${piatto.nome}">CARBONARA</h3>
+				<p th:text="${piatto.descrizione}">DESCRIZIONE</p>
+				<div class="links">
+					<span> <a
+						th:href="@{/admin/piatto/doDelete/{id}(id = ${piatto.id})}">ELIMINA</a>
+					</span> <span> <a
+						th:href="@{/admin/piatto/edit/{id}(id = ${piatto.id})}">MODIFICA</a>
+					</span>
 				</div>
 			</div>
 		</div>
-	</main>
+	</div>
 	<footer>
 		<div>
 			<ul>

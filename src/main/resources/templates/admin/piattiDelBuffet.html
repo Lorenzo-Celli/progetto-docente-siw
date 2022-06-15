@@ -6,16 +6,14 @@
 <title>SIW CATERING</title>
 </head>
 <body>
-	<main>
-		<div id="flex-container">
-			<div class="flex-item" th:each="piatto : ${piatti}">
-				<div class="text_container">
-					<p class="section-description" th:text="${piatto.nome}">CARBONARA</p>
-					<p class="description" th:text="${piatto.descrizione}">DESCRIZIONE</p>
-				</div>
+	<div class="main">
+		<div class="maincard">
+			<div class="subcard" th:each="piatto : ${piatti}">
+				<h3 th:text="${piatto.nome}">CARBONARA</h3>
+				<p th:text="${piatto.descrizione}">DESCRIZIONE</p>
 			</div>
 		</div>
-	</main>
+	</div>
 	<footer>
 		<div>
 			<ul>
