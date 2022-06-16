@@ -1,12 +1,14 @@
 package it.uniroma3.catering.siw.model;
 
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Chef {
@@ -15,7 +17,9 @@ public class Chef {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	
 	private String nome;
+	
 	
 	private String cognome;
 	
@@ -65,6 +69,24 @@ public class Chef {
 	public void setBuffets(List<Buffet> buffets) {
 		this.buffets = buffets;
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(cognome, nome);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Chef other = (Chef) obj;
+		return Objects.equals(cognome, other.cognome) && Objects.equals(nome, other.nome);
+	}
+	
 	
 	
 	

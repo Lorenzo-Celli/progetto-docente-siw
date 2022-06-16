@@ -21,7 +21,15 @@ public class ChefService {
 	public void save(Chef c) {
 		cr.save(c);
 	}
-
+	
+	public boolean exist(Chef chef) {
+		for (Chef c : cr.findAll()) {
+			if (c.equals(chef)) 
+				return true;
+		}
+		return false;
+	}
+	
 	public Chef findById(Long id) {
 		return cr.findById(id).get();
 	}

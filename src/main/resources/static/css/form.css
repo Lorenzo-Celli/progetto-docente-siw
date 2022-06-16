@@ -160,7 +160,12 @@ footer a{
     padding-top:6px
 }
 
-
+.error-message{
+	
+	color: red;
+	font-size:15px !important;
+	
+}
 
 /*      footer         */
 

@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import it.uniroma3.catering.siw.model.Chef;
 import it.uniroma3.catering.siw.model.Piatto;
 import it.uniroma3.catering.siw.repository.PiattoRepository;
 
@@ -24,6 +25,14 @@ public class PiattoService {
 	
 	public Piatto findById(Long id) {
 		return pr.findById(id).get();
+	}
+	
+	public boolean exist(Piatto piatto) {
+		for (Piatto p : pr.findAll()) {
+			if (p.equals(piatto)) 
+				return true;
+		}
+		return false;
 	}
 	
 	public List<Piatto> findAll(){

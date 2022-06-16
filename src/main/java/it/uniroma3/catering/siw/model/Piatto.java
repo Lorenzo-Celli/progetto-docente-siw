@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotBlank;
 
 
 @Entity
@@ -21,7 +22,7 @@ public class Piatto {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-
+	
 	private String nome;
 	
 	private String descrizione;
@@ -78,7 +79,7 @@ public class Piatto {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(descrizione, nome);
 	}
 
 	@Override
@@ -90,8 +91,10 @@ public class Piatto {
 		if (getClass() != obj.getClass())
 			return false;
 		Piatto other = (Piatto) obj;
-		return Objects.equals(id, other.id);
+		return Objects.equals(descrizione, other.descrizione) && Objects.equals(nome, other.nome);
 	}
+
+	
 	
 	
 	

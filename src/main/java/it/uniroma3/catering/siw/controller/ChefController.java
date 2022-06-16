@@ -2,6 +2,8 @@ package it.uniroma3.catering.siw.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,11 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.uniroma3.catering.siw.controller.validator.ChefValidator;
-import it.uniroma3.catering.siw.model.Buffet;
 import it.uniroma3.catering.siw.model.Chef;
-import it.uniroma3.catering.siw.service.BuffetService;
 import it.uniroma3.catering.siw.service.ChefService;
-import it.uniroma3.catering.siw.service.PiattoService;
 
 @Controller
 public class ChefController {
@@ -27,11 +26,6 @@ public class ChefController {
 	@Autowired
 	private ChefService chefService;
 	
-	@Autowired
-	private BuffetService buffetService;
-	
-	@Autowired
-	private PiattoService piattoService;
 	
 	@RequestMapping(value="/admin/chef", method = RequestMethod.GET)
 	public String getBuffets(Model model) {
@@ -58,7 +52,7 @@ public class ChefController {
 	
 	
 	@RequestMapping(value="/admin/chefForm", method = RequestMethod.POST, params = "action=salvaChefDalloChef")
-	public String addBuffetss(@ModelAttribute("chef") Chef chef,
+	public String addBuffetss(@Valid @ModelAttribute("chef") Chef chef,
             				BindingResult bindingResult,
             				Model model) {
 		
@@ -67,25 +61,14 @@ public class ChefController {
 		
 		if (!bindingResult.hasErrors()) {
 			this.chefService.save(chef);
-			List<Chef> chefs = chefService.findAll();
-			model.addAttribute("chefs", chefs);
+			model.addAttribute("chefs", chefService.findAll());
 			return "admin/chef.html";
 		}
-		return "admin/chef.html";
+		String cp = "chefForm";
+		model.addAttribute("currentPath",cp);
+		return "admin/chefForm.html";
 	}
 	
-	@RequestMapping(value="/admin/chefForm", method = RequestMethod.POST, params = "action=salvaChef")
-	public String adddChef(Model model,
-						@ModelAttribute("chef") Chef c) {
-		chefService.save(c);
-		model.addAttribute("buffet", new Buffet());
-		model.addAttribute("chefs",chefService.findAll());
-		model.addAttribute("currentChef", new Chef());
-		model.addAttribute("piatti", piattoService.findAll());
-		return "admin/buffetForm.html";
-		
-		
-	}
 
 
 
