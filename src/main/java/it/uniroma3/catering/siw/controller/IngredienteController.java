@@ -2,6 +2,8 @@ package it.uniroma3.catering.siw.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,7 +34,7 @@ public class IngredienteController {
 
 	@RequestMapping(value="/admin/ingredienteForm", method = RequestMethod.POST, params = "action=keepAdding")
 	public String addIngredients(Model model,
-			@ModelAttribute("ingrediente") Ingrediente ingrediente, BindingResult bindingResult) {
+			@Valid @ModelAttribute("ingrediente") Ingrediente ingrediente, BindingResult bindingResult) {
 		
 		this.ingredienteValidator.validate(ingrediente, bindingResult);
 		
@@ -47,21 +49,11 @@ public class IngredienteController {
 		
 		model.addAttribute("ingredienti",ingredienteService.findByPiatto(ingrediente.getPiatto()));
 		model.addAttribute("piatto", ingrediente.getPiatto());
-		model.addAttribute("ingrediente", new Ingrediente());
 		return "admin/ingredienteForm.html";
+		
 	}
 	
-	@RequestMapping(value="/admin/ingredienteForm", method = RequestMethod.POST, params = "action=finish")
-	public String finishAdding(Model model,
-			@ModelAttribute("ingrediente") Ingrediente i) {
-		
-		ingredienteService.save(i); //da validare prima 
-//		Piatto currentPiatto = piattoService.findById(i.getPiatto().getId());
-//		currentPiatto.addIngredienti(ingredienteService.findByPiatto(currentPiatto));
-//		piattoService.save(currentPiatto);
-		return "redirect:/default";
 
-	}
 	
 	@RequestMapping(value = "/admin/ingrediente/doDelete/{id}", method = RequestMethod.GET) 
 	private String deleteIngrediente(@PathVariable("id") Long id,Model model) {

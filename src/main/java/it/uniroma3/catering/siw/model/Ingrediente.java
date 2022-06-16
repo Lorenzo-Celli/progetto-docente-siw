@@ -70,7 +70,7 @@ public class Ingrediente {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(descrizione, nome, origine);
 	}
 
 
@@ -84,8 +84,12 @@ public class Ingrediente {
 		if (getClass() != obj.getClass())
 			return false;
 		Ingrediente other = (Ingrediente) obj;
-		return Objects.equals(id, other.id);
+		return Objects.equals(descrizione, other.descrizione) && Objects.equals(nome, other.nome)
+				&& Objects.equals(origine, other.origine);
 	}
+
+
+
 	
 	
 

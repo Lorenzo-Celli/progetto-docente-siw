@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import it.uniroma3.catering.siw.controller.validator.BuffetValidator;
 import it.uniroma3.catering.siw.controller.validator.ChefValidator;
 import it.uniroma3.catering.siw.model.Buffet;
 import it.uniroma3.catering.siw.model.Chef;
@@ -26,11 +27,14 @@ public class BuffetController {
 	private BuffetService buffetService;
 
 	@Autowired
+	private BuffetValidator buffetValidator;
+
+	@Autowired
 	private ChefService chefService;
 
 	@Autowired
 	private PiattoService piattoService;
-	
+
 	@Autowired
 	private ChefValidator chefValidator;
 
@@ -79,7 +83,7 @@ public class BuffetController {
 			model.addAttribute("piatti", piattoService.findAll());
 			return "admin/buffetForm.html";
 		}
-		
+
 		String cp = "buffetForm/createChef";
 		model.addAttribute("currentPath", cp);
 		return "admin/chefForm.html";
@@ -87,29 +91,30 @@ public class BuffetController {
 	}
 
 
-	@RequestMapping(value="/admin/buffetForm", method = RequestMethod.POST, params = "action=saveBuffet")
-	public String salvaBuffet(Model model,
-			@ModelAttribute("buffet") Buffet b) {
-		buffetService.save(b);
-		model.addAttribute("buffet", new Buffet());
-		model.addAttribute("chefs",chefService.findAll());
-		model.addAttribute("currentChef", new Chef());
-		return "admin/buffetForm.html";
-
-
-	}
 
 	@RequestMapping(value="/admin/buffetForm", method = RequestMethod.POST, params = "action=savePiatto")
 	public String salvaPiatto(Model model,
-			@ModelAttribute("buffet") Buffet b) {
+			@Valid @ModelAttribute("buffet") Buffet b, BindingResult bindingResult) {
+
+		this.buffetValidator.validate(b, bindingResult);
+		
 		Piatto piattoCorrente = b.getPiatti().get(0);
-		piattoCorrente.getBuffets().add(b);
-		buffetService.save(b);
-		piattoService.save(piattoCorrente);
-		model.addAttribute("piatti", piattoService.findAll());
-		model.addAttribute("buffet", b);
-		model.addAttribute("chefs",chefService.findAll());
-		model.addAttribute("currentChef", b.getChef());
+
+		if (!bindingResult.hasErrors()) {
+			
+
+			piattoCorrente.getBuffets().add(b);
+			buffetService.save(b);
+			piattoService.save(piattoCorrente);
+			
+			model.addAttribute("piatti", piattoService.findAll());
+			model.addAttribute("buffet", b);
+			model.addAttribute("chefs",chefService.findAll());
+			model.addAttribute("currentChef", b.getChef());
+			return "admin/buffetForm.html";
+
+		}
+		
 		return "admin/buffetForm.html";
 
 
@@ -159,12 +164,7 @@ public class BuffetController {
 
 	/*+++++++++++++++++++++++++++++++++METODI LATO USER+++++++++++++++++++++++++++++++++++++++++*/
 
-	//	@RequestMapping(value="/buffet", method = RequestMethod.GET)
-	//	public String visualizzaBuffets(Model model) {
-	//		model.addAttribute("buffets", buffetService.findAll());
-	//		return "elencoBuffets.html";
-	//	}
-	//	
+
 	@RequestMapping(value="/buffet/{id}", method = RequestMethod.GET)
 	public String visualizzaBuffet(Model model, @PathVariable("id") Long id) {
 		model.addAttribute("buffet", buffetService.findById(id));

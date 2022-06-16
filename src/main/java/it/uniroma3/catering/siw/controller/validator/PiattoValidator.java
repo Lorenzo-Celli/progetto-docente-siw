@@ -13,7 +13,7 @@ import it.uniroma3.catering.siw.service.PiattoService;
 public class PiattoValidator implements Validator {
 
 	final Integer MAX_NAME_LENGTH = 100;
-	final Integer MIN_NAME_LENGTH = 1;
+	final Integer MIN_NAME_LENGTH = 2;
 
 	final Integer MAX_DESCRIPTION_LENGTH = 255;
 

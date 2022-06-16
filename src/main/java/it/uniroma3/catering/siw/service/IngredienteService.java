@@ -35,6 +35,7 @@ public class IngredienteService {
 		return Ingredienti;
 	}
 	
+
 	public List<Ingrediente> findByPiatto(Piatto p){
 		List<Ingrediente> ingredienti = new ArrayList<>();
 		List<Ingrediente> tutti = this.findAll();
