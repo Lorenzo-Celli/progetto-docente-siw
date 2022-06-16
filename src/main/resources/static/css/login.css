@@ -104,6 +104,13 @@ main {
   font-size: 25px;
 }
 
+.error-message{
+	
+	color: red;
+	font-size:15px !important;
+	
+}
+
 footer {
     height: 7vh;
     background-color: black;

@@ -40,7 +40,11 @@ public class AuthenticationController {
 		return "registerUser";
 	}
 	
-
+	@RequestMapping(value = "/login", method = RequestMethod.GET) 
+	public String showLoginForm (Model model) {
+		return "index";
+	}
+	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET) 
 	public String logout(Model model) {
 		return "index";
@@ -65,15 +69,12 @@ public class AuthenticationController {
                  BindingResult credentialsBindingResult,
                  Model model) {
 
-        // validate user and credentials fields
         this.userValidator.validate(user, userBindingResult);
         this.credentialsValidator.validate(credentials, credentialsBindingResult);
 
-        // if neither of them had invalid contents, store the User and the Credentials into the DB
         if(!userBindingResult.hasErrors() && ! credentialsBindingResult.hasErrors()) {
-            // set the user and store the credentials;
-            // this also stores the User, thanks to Cascade.ALL policy
-            credentials.setUser(user);
+
+        	credentials.setUser(user);
             credentialsService.saveCredentials(credentials);
             return "registrationSuccessful";
         }

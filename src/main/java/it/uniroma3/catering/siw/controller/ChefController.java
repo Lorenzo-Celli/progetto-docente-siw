@@ -29,25 +29,31 @@ public class ChefController {
 	
 	@RequestMapping(value="/admin/chef", method = RequestMethod.GET)
 	public String getBuffets(Model model) {
+		
 		List<Chef> chefs = chefService.findAll();
 		model.addAttribute("chefs", chefs);
 		return "admin/chef.html";
+		
 	}
 	
 	@RequestMapping(value="/admin/chefForm", method = RequestMethod.GET)
 	public String addBuffets(Model model) {
+		
 		String cp = "chefForm";
 		model.addAttribute("currentPath",cp);
 		model.addAttribute("chef", new Chef());
 		return "admin/chefForm.html";
+		
 	}
 	
 
 	@RequestMapping(value="/admin/chef/doDelete/{id}", method = RequestMethod.GET)
 	public String doDelete(@PathVariable("id") Long id, Model model) {
+		
 		chefService.delete(chefService.findById(id));
 		model.addAttribute("chefs", chefService.findAll());
 		return "admin/chef.html";
+		
 	}
 	
 	

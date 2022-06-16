@@ -57,14 +57,18 @@ public class IngredienteController {
 	
 	@RequestMapping(value = "/admin/ingrediente/doDelete/{id}", method = RequestMethod.GET) 
 	private String deleteIngrediente(@PathVariable("id") Long id,Model model) {
+		
 		Long idPiattoCorrente = ingredienteService.findById(id).getPiatto().getId();
 		Piatto piattoCorrente = piattoService.findById(idPiattoCorrente);
 		piattoCorrente.getIngredienti().remove(ingredienteService.findById(id));
 		ingredienteService.delete(ingredienteService.findById(id));
+		
 		model.addAttribute("ingrediente", new Ingrediente());
 		model.addAttribute("piatto", piattoCorrente);
 		model.addAttribute("ingredienti", piattoCorrente.getIngredienti());
+		
 		return "admin/ingredienteForm";
+		
 	}
 
 	

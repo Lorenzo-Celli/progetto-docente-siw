@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Chef {
@@ -17,9 +16,7 @@ public class Chef {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	
 	private String nome;
-	
 	
 	private String cognome;
 	

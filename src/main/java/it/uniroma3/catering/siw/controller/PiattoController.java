@@ -33,17 +33,22 @@ public class PiattoController {
 
 	@RequestMapping(value = "/admin/piatto", method = RequestMethod.GET) 
 	private String visualizzaPiatto(Model model) {
+		
 		model.addAttribute("piatti", piattoService.findAll());
+		
 		return "admin/piatto.html";
+		
 	}
 
 	@RequestMapping(value="/admin/piattoForm", method = RequestMethod.GET)
 	public String addPiatto(Model model) {
+		
 		model.addAttribute("ingredientiTotali", ingredienteService.findAll());
 		model.addAttribute("piatto", new Piatto());
 		model.addAttribute("ingredienti", new Ingrediente());
 		model.addAttribute("tmp", new Piatto());
 		model.addAttribute("ingrediente", new Ingrediente());
+		
 		return "admin/piattoForm.html";
 	}
 
@@ -65,7 +70,9 @@ public class PiattoController {
 			model.addAttribute("piatto",p);
 			model.addAttribute("ingrediente" , new Ingrediente());
 			model.addAttribute("ingredienti", pp.getIngredienti());
+			
 			piattoService.save(p);
+			
 			return "admin/ingredienteForm.html";
 			
 		}
@@ -75,24 +82,33 @@ public class PiattoController {
 	}
 	@RequestMapping(value = "/admin/piatto/doDelete/{id}", method = RequestMethod.GET) 
 	private String deletePiatto(@PathVariable("id") Long id,Model model) {
+		
 		piattoService.delete(piattoService.findById(id));
 		model.addAttribute("piatti", piattoService.findAll());
+		
 		return "admin/piatto.html";
+		
 	}
 
 
 	@RequestMapping(value = "/admin/piatto/edit/{id}", method = RequestMethod.GET) 
 	private String editPiatto(@PathVariable("id") Long id,Model model) {
+		
 		model.addAttribute("piatto", piattoService.findById(id));
+		
 		return "admin/piattoForm.html";
+		
 	}
 
 	// LATO USER
 
 	@RequestMapping(value = "/piatto/{id}", method = RequestMethod.GET) 
 	private String piatto(@PathVariable("id") Long id,Model model) {
+		
 		model.addAttribute("piatto", piattoService.findById(id));
+		
 		return "/piatto.html";
+		
 	}
 
 }

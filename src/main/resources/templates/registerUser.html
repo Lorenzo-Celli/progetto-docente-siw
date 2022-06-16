@@ -14,18 +14,29 @@
 			method="POST">
 			<div class="title_div">REGISTRATI</div>
 			<div class="form_div">
+
 				<label>Username:</label> <input class="field_class" name="username"
-					type="text" placeholder="Username" autofocus required
-					th:field="${credentials.username}"> <label>Password:</label>
-				<input id="pass" class="field_class" name="password" type="password"
-					placeholder="password" required th:field="${credentials.password}">
+					type="text" placeholder="Username" autofocus 
+					th:field="${credentials.username}">
+				<p class="error-message" th:if="${#fields.hasErrors('credentials.username')}"
+					th:errors="${credentials.username}"></p>
+
+				<label>Password:</label> <input id="pass" class="field_class"
+					name="password" type="password" placeholder="password" 
+					th:field="${credentials.password}">
+				<p class="error-message" th:if="${#fields.hasErrors('credentials.password')}"
+					th:errors="${credentials.password}"></p>
 
 				<label>Nome:</label> <input class="field_class" name="nome"
-					type="text" placeholder="nome" required th:field="${user.nome}">
+					type="text" placeholder="nome"  th:field="${user.nome}">
+				<p class="error-message" th:if="${#fields.hasErrors('user.nome')}"
+					th:errors="${user.nome}"></p>
 
 				<label>Cognome:</label> <input class="field_class" name="cognome"
-					type="text" placeholder="cognome" required
+					type="text" placeholder="cognome" 
 					th:field="${user.cognome}">
+				<p class="error-message" th:if="${#fields.hasErrors('credentials.username')}"
+					th:errors="${user.cognome}"></p>
 
 				<button class="submit_class" type="submit">REGISTER</button>
 			</div>
