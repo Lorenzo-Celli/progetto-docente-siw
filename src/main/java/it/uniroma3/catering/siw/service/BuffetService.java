@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.uniroma3.catering.siw.model.Buffet;
+import it.uniroma3.catering.siw.model.Piatto;
 import it.uniroma3.catering.siw.repository.BuffetRepository;
 
 @Service
@@ -32,6 +33,16 @@ public class BuffetService {
 			buffets.add(b);
 		}
 		return buffets;
+	}
+	
+	public boolean containsPiatto(Piatto p, Buffet b) {
+		
+		Long cId = b.getId();
+		
+		if (cId != null) {
+			return br.findById(cId).get().getPiatti().contains(p);
+		}
+		return false;
 	}
 	
 	@Transactional

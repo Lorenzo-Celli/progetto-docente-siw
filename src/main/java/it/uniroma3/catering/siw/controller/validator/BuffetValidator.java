@@ -28,11 +28,9 @@ public class BuffetValidator implements Validator {
             errors.rejectValue("nome", "size");
 
         if (descrizione.length() > MAX_DESCRIPTION_LENGTH)
-            errors.rejectValue("cognome", "size");
+            errors.rejectValue("descrizione", "size");
         
-//        if (chefService.exist(chef)) {
-//        	errors.reject("duplicate.chef");
-//        }
+
         
     }
     
